@@ -1,0 +1,257 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: clip;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1,h2,h3,h4 {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h3, h4 {
+    font-weight: bold;
+}
+
+section {
+    padding: 30px 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #fdfcf0;
+}
+
+.head {
+    background-color: #efc849;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    margin: 0;
+    z-index: 10000;
+    height: 75px;
+}
+
+.logo img {
+    max-width: 70px;
+    max-height: 70px;
+    margin-left: 20%;
+    display: block;
+
+}
+
+.nav-liens ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-liens ul li {
+    margin: 7px;
+}
+
+.nav-liens ul li a{
+    color: #000000;
+    text-decoration: none;
+}
+
+.nav-liens ul li a.active{
+    color: #c48b1d;
+    font-weight: 800;
+    border-bottom: 2px solid #c48b1d;
+}
+
+.login {
+    display: block;
+    max-width: 60px;
+    max-height: 60px;
+    margin: 0;
+}
+
+.nav-liens ul li:last-child {
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-liens ul li a:hover {
+    color: #ffffff;
+    transition: color 0.2s ease;
+}
+
+.bouton {
+    display: inline-block;
+    background-color: #1a1a1a;
+    color: #efc849;
+    padding: 12px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: 2px solid #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+.bouton:hover {
+    background-color: transparent;
+    color: #1a1a1a;
+}
+
+.foot {
+    background-color: #efc849;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.footer-nav ul {
+    list-style: none;
+    margin-bottom: 8px;
+}
+
+.footer-nav ul li a{
+    color: #000000;
+    text-decoration: none;
+}
+
+.footer-nav ul li a.active {
+    color: #c48b1d;
+    font-weight: bold;}
+
+.footer-nav ul li a:hover {
+    transition: color 0.15s;
+    color: #ffffff;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.bloc-reseaux {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.bloc-reseaux img {
+    max-width: 70px;
+    max-height: 70px;
+    margin: 10% 20%;
+}
+
+.menu-toggle, .burger {
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .nav-liens ul li a img.login {
+        margin: 0 auto;
+        max-width: 40px;
+        max-height: 40px;
+        display: block;
+    }
+
+    .head {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 15px;
+        width: 100%;
+        z-index: 999999;
+    }
+
+    .nav-liens {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background-color: #ffe7c2;
+        border-bottom: 2px solid #ffd9c2;
+    }
+
+    .menu-toggle:checked ~ .nav-liens {
+        display: block;
+    }
+
+    .nav-liens ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    .nav-liens ul li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .login {
+        margin: 0 !important;
+        position: static;
+    }
+
+    .burger {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .burger span {
+        width: 100%;
+        height: 3px;
+        background-color: #000;
+        transition: 0.3s;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-about_contact {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

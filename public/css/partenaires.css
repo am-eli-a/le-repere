@@ -1,0 +1,120 @@
+.partenaires-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 50px 20px;
+    width: 100%;
+}
+
+.fil-d_actu {
+    flex: 0 0 250px;
+    background: #ffffff;
+    border: 2px solid #1a1a1a;
+    padding: 20px;
+    box-shadow: 6px 6px 0 #1a1a1a;
+}
+
+.fil-d_actu h3 {
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    border-bottom: 3px solid #efc849;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.video-link {
+    display: block;
+    padding: 12px;
+    color: #1a1a1a;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.video-link:hover {
+    background: #efc849;
+    border: 1px solid #1a1a1a;
+}
+
+.partenaires-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 2px solid #1a1a1a;
+    padding: 40px;
+    margin-bottom: 20px;
+    box-shadow: 8px 8px 0 #1a1a1a;
+}
+
+.partenaires-textes h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1a1a1a;
+    border-bottom: 4px solid #efc849;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+}
+
+.partenaires-textes p {
+    line-height: 1.8;
+    color: #333;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.logo-slider-container {
+    width: 100vw;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+    background-color: #efc849;
+}
+
+.logo-slider-track {
+    display: flex;
+    width: calc(340px * 9);
+    animation: scrollLogos 15s linear infinite;
+    gap: 40px;
+    padding: 0;
+}
+
+.logo-slide {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 220px;
+}
+
+.logo-slide img {
+    max-width: 220px;
+    height: 150px;
+    margin-bottom: 15px;
+    object-fit: contain;
+    transition: filter 0.3s;
+}
+
+.logo-slide:hover img {
+    filter: grayscale(0%);
+}
+
+.logo-slide p {
+    margin: 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #1a1a1a;
+    padding: 2px 10px;
+}
+
+@keyframes scrollLogos {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-1020px);}
+}
