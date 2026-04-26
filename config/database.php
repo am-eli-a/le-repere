@@ -86,12 +86,12 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DB_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'url' => env('DATABASE_URL'),
+            'host' => 'db.qdumrlgvmfpoebxviqsy',
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'le_repere'),
             'username' => env('DB_USERNAME', 'postgres'),
-            'password' => env('DB_PASSWORD', 'Amelia@:)'),
+            'password' => env('DB_PASSWORD', 'GsfYxx6kokSfE3cH'),
             'charset' => env('DB_CHARSET', 'utf8'),
             'prefix' => '',
             'prefix_indexes' => true,
