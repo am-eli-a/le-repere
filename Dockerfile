@@ -27,3 +27,12 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 # Port exposé
 EXPOSE 80
+
+# Création d'un script de démarrage
+RUN echo '#!/bin/sh\n\
+php artisan migrate --force\n\
+apache2-foreground' > /usr/local/bin/start.sh
+
+RUN chmod +x /usr/local/bin/start.sh
+
+CMD ["/usr/local/bin/start.sh"]
