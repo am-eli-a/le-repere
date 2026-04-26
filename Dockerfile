@@ -30,7 +30,7 @@ RUN composer install --no-dev --optimize-autoloader
 
 # 7. Installation des dépendances NPM et compilation des assets (CSS/JS)
 RUN npm install
-RUN npm run build
+RUN npm run build || (echo "Erreur lors du build Vite" && exit 1)
 
 # 8. Réglage des permissions pour Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
