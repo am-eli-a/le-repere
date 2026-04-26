@@ -1,35 +1,46 @@
 FROM php:8.4-apache
 
-# Installation des dépendances système et PHP pour PostgreSQL
+# 1. Installation des dépendances système (on ajoute curl et gnupg pour Node.js)
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     libpng-dev \
     zip \
     unzip \
     git \
+    curl \
+    gnupg \
     && docker-php-ext-install pdo pdo_pgsql gd
 
-# Activation du module rewrite d'Apache
+# 2. Installation de Node.js (nécessaire pour compiler le CSS/JS avec Vite)
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get install -y nodejs
+
+# 3. Activation du module rewrite d'Apache
 RUN a2enmod rewrite
 
-# Copie des fichiers du projet
+# 4. Copie des fichiers du projet dans le conteneur
 COPY . /var/www/html
 
-# Configuration du DocumentRoot sur le dossier public de Laravel
+# 5. Configuration d'Apache pour pointer sur le dossier /public de Laravel
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 
-# Installation de Composer
+# 6. Installation de Composer et des dépendances PHP
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
 
-# Permissions pour Laravel
+# 7. Installation des dépendances NPM et compilation des assets (CSS/JS)
+RUN npm install
+RUN npm run build
+
+# 8. Réglage des permissions pour Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Port exposé
+# 9. Port exposé
 EXPOSE 80
 
-# Création d'un script de démarrage
+# 10. Création du script de démarrage (Migrations + Lancement Apache)
 RUN echo '#!/bin/sh\n\
+php artisan config:clear\n\
 php artisan migrate --force\n\
 apache2-foreground' > /usr/local/bin/start.sh
 
