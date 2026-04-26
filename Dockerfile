@@ -30,6 +30,7 @@ EXPOSE 80
 # 7. Script de démarrage (Config clear + Migration)
 RUN echo '#!/bin/sh\n\
 php artisan config:clear\n\
+php artisan cache:clear\n\
 php artisan migrate --force\n\
 apache2-foreground' > /usr/local/bin/start.sh
 
