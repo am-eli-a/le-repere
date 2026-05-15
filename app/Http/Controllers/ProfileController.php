@@ -65,13 +65,21 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
-        Auth::logout();
+        // 1. Détacher l'utilisateur des catégories du répertoire (table pivot)
+        $user->categories()->detach();
 
+        // 2. Supprimer ses relations (si tu n'as pas mis "cascade" dans la BDD)
+        $user->annonces()->delete();
+        $user->avis()->delete();
+        $user->suggestions()->delete();
+
+        // 3. Déconnexion et suppression
+        Auth::logout();
         $user->delete();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::to('/')->with('success', 'Ton compte et toutes tes données ont été supprimés.');
     }
 }

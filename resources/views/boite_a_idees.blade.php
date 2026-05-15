@@ -7,16 +7,35 @@
         <h2>Vos suggestions</h2>
         <p>N'hésitez pas à proposer une idée :)</p>
 
-        <a href="{{ route('contact') }}" class="bouton">Faire une suggestion</a>
+        @auth
+            <a href="{{ route('dashboard') }}" class="bouton">Faire une suggestion</a>
+        @else
+            <p>Vous devez être connecté pour poster une suggestion.</p>
+            <a href="{{ route('login') }}" class="bouton">Se connecter</a>
+        @endauth
 
         <div class="boite_idee-bloc">
             @foreach($suggestions as $suggestion)
                 <div class="boite_idee-box">
-                    <h3>{{$suggestion->titre}}</h3>
+                    <h3>{{ $suggestion->titre }}</h3>
                     <p>Description de l'idée :</p>
-                    <p>{{$suggestion->description}}</p>
+                    <p>{{ $suggestion->description }}</p>
+
                     <div class="vote">
-                        <button class="aprouve">Je valide !</button>
+                        @auth
+                            <form action="{{ route('suggestions.like', $suggestion->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="aprouve {{ $suggestion->isLikedBy(auth()->user()) ? 'already-voted' : '' }}">
+                                    Je valide !
+                                    <span class="count-badge">{{ $suggestion->likes_count }}</span>
+                                </button>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="aprouve" style="text-decoration: none;">
+                                Je valide !
+                                <span class="count-badge">{{ $suggestion->likes()->count() }}</span>
+                            </a>
+                        @endauth
                     </div>
                 </div>
             @endforeach

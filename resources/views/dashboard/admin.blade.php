@@ -17,38 +17,32 @@
                 <a href="#" class="nav-link" onclick="showSection('modif-mon-profil')">MODIFIER MON PROFIL</a>
                 <a href="#" class="nav-link" onclick="showSection('gestion-membres')">👥 Membres</a>
                 <a href="#" class="nav-link" onclick="showSection('gestion-categories')">🛠 Métiers</a>
+                <a href="#" class="nav-link" onclick="showSection('gestion-informations')">🛈 Informations</a>
+                <a href="#" class="nav-link" onclick="showSection('publication-informations')">🛈 Publier une information</a>
                 <a href="#" class="nav-link" onclick="showSection('gestion-suggestions')">💡 Boîte à idées</a>
-                <a href="#" class="nav-link" onclick="showSection('gestion-avis')">💬 Avis clients</a>
+                <a href="#" class="nav-link" onclick="showSection('gestion-annonces')">📢 Annonces</a>
+                <a href="#" class="nav-link" onclick="showSection('gestion-avis')">💬 Avis</a>
+                <a href="#" class="nav-link" onclick="showSection('delete-section')">Supprimer mon compte</a>
+
 
                 @if(auth()->user()->role === 'super_admin')
                     <div class="super-admin-divider">
-                        <span>Zone Secrète</span>
                         <a href="#" class="nav-link link-danger" onclick="showSection('gestion-admins')">👑 Gérer les Admins</a>
                     </div>
                 @endif
+
+                @auth
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="bouton-logout">
+                            Se déconnecter
+                        </button>
+                    </form>
+                @endauth
             </nav>
         </aside>
 
         <main class="admin-content">
-
-            <div class="message-container">
-                @if(session('success'))
-                    <div class="alert-flash alert-success" id="flash-message">
-                        <span class="icon">✅</span>
-                        <p>{{ session('success') }}</p>
-                    </div>
-                @endif
-                @if($errors->any())
-                    <div class="alert-flash alert-danger">
-                        <span class="icon">⚠️</span>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-            </div>
 
             <section id="accueil" class="admin-section" style="display: block;">
                 <h1>Salut {{ auth()->user()->prenom }} :)</h1>
@@ -133,12 +127,28 @@
                                 <td>{{ $u->email }}</td>
                                 <td>{{ $u->role }}</td>
                                 <td>
-                                    @if ($u->role === 'user' || (auth()->user()->role === 'super_admin' && $u->id !== auth()->id()))
-                                        <form action="{{ route('user.destroy', $u->id) }}" method="POST" onsubmit="return confirm('Supprimer cet utilisateur ?')">
-                                            @csrf @method('DELETE')
-                                            <button type="submit" class="btn-delete">Supprimer</button>
-                                        </form>
+                                    @if(auth()->user()->role === 'super_admin')
+                                        @if($u->role === 'user')
+                                            <form action="{{ route('user.promote', $u->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="bouton-small success">Promouvoir Admin</button>
+                                            </form>
+                                        @elseif($u->role === 'admin')
+                                            <form action="{{ route('user.demote', $u->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="bouton-small danger">Rétrograder</button>
+                                            </form>
+                                        @endif
                                     @endif
+                                        @if($u->id !== auth()->id())
+                                            <form action="{{ route('user.destroy', $u->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="bouton-small danger">Supprimer</button>
+                                            </form>
+                                        @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -156,7 +166,6 @@
                         <button type="submit" class="bouton">Ajouter</button>
                     </form>
                 </div>
-
                 <div class="admin-card">
                     <h3>Liste des catégories</h3>
                     <div style="display: flex; wrap: wrap; gap: 10px; margin-top: 20px;">
@@ -173,22 +182,202 @@
                 </div>
             </section>
 
+
+            <section id="publication-informations" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h2>Publier une information</h2>
+                    <form action="{{ route('information.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label>Image de l'information</label>
+                            <input type="file" name="affiche" accept="image/*">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Titre</label>
+                            <input type="text" name="titre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Contenu</label>
+                            <textarea name="description" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="bouton">Mettre en ligne</button>
+                    </form>
+                </div>
+            </section>
+
+
+            <section id="gestion-informations" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h3>🛈 Gérer les informations publiées</h3>
+
+                    @forelse($toutesLesInfos as $info)
+                        <div class="item-list" style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 2px solid #000; margin-bottom: 10px; background: #fff;">
+                            <div>
+                                <strong>{{ $info->titre }}</strong><br>
+                                <small>Publié le {{ $info->created_at->format('d/m/Y') }} par {{ $info->user->prenom }}</small>
+                            </div>
+
+                            <form action="{{ route('information.destroy', $info->id) }}" method="POST" onsubmit="return confirm('Supprimer cette info ?')">
+                                @csrf @method('DELETE')
+                                <button type="submit" style="color: red; background: none; border: none; font-weight: bold; cursor: pointer;">
+                                    Supprimer
+                                </button>
+                            </form>
+                        </div>
+                    @empty
+                        <p>Aucune information publiée pour le moment.</p>
+                    @endforelse
+                </div>
+            </section>
+
+
             <section id="gestion-suggestions" class="admin-section" style="display: none;">
                 <div class="admin-card">
                     <h3>💡 Suggestions à modérer</h3>
                     @forelse($suggestions as $sug)
-                        <div class="item-list">
-                            <p><strong>{{ $sug->titre }}</strong></p>
+                        <div class="suggestion-card" style="border-bottom: 2px solid #000; padding-bottom: 20px; margin-bottom: 20px;">
+                            <div class="suggestion-meta">
+                                <p><strong>Posté par :</strong> {{ $sug->user->prenom ?? 'Utilisateur supprimé' }} {{ $sug->user->nom ?? '' }}</p>
+                                <p><strong>Le :</strong> {{ $sug->created_at->format('d/m/Y à H:i') }}
+                                    <span class="date-relative">({{ $sug->created_at->diffForHumans() }})</span>
+                                </p>
+                                <p><strong>Titre :</strong> {{ $sug->titre }}
+                            </div>
+                            <div class="suggestion-content">
+                                <p>{{ $sug->description }}</p>
+                            </div>
                             <form action="{{ route('suggestions.validate', $sug->id) }}" method="POST">
-                                @csrf @method('PATCH')
-                                <button class="bouton-small">Valider</button>
+                                @csrf
+                                @method('PATCH')
+                                <button type="submit" class="bouton-valider">Valider la suggestion</button>
                             </form>
                         </div>
                     @empty
-                        <p>Aucune suggestion en attente.</p>
+                        <p>Aucune suggestion en attente de modération. 👌</p>
+                    @endforelse
+                    <hr style="margin: 40px 0; border: 1px solid #eee;">
+                    <h3>✅ Suggestions déjà publiées ({{ $suggestions_count }})</h3>
+                    @forelse($suggestionsEnLigne as $item)
+                        <div class="item-list" style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 2px solid #1a1a1a; margin-bottom: 10px; background: #f9f9f9;">
+                            <div>
+                                <strong>{{ $item->titre }}</strong><br>
+                                <small style="color: #666;">
+                                    Par : {{ $item->user->prenom . ' ' . $item->user->nom ?? 'Inconnu' }} |
+                                    Publié le : {{ $item->created_at->format('d/m/Y') }}
+                                </small>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <form action="{{ route('suggestion.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Supprimer cette suggestion ?')">
+                                    @csrf @method('DELETE')
+                                    <button type="submit" style="background:none; border:none; color:#ff4d4d; font-weight:bold; cursor:pointer;">Supprimer</button>
+                                </form>
+                            </div>
+                        </div>
+                    @empty
+                        <p>Aucune suggestion en ligne pour le moment.</p>
                     @endforelse
                 </div>
             </section>
+
+            <section id="gestion-annonces" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h3>📢 Annonces à modérer</h3>
+                    @forelse($toutesLesAnnonce as $annonce)
+                        <div class="suggestion-card" style="border-bottom: 2px solid #000; padding-bottom: 20px; margin-bottom: 20px;">
+                            <div class="suggestion-meta">
+                                <p><strong>Posté par :</strong> {{ $annonce->user->prenom }} {{ $annonce->user->nom }}</p>
+                                <p><strong>Le :</strong> {{ $annonce->created_at->format('d/m/Y à H:i') }}</p>
+                            </div>
+
+                            <div class="suggestion-content">
+                                <p><strong>Titre : </strong>{{ $annonce->titre }}</p>
+                                @if($annonce->affiche)
+                                    <img src="{{ asset('storage/' . $annonce->affiche) }}" style="max-width: 150px; border-radius: 5px;">
+                                @endif
+                            </div>
+
+                            <form action="{{ route('annonces.validate', $annonce->id) }}" method="POST" style="margin-top: 10px;">
+                                @csrf @method('PATCH')
+                                <button type="submit" class="bouton-valider">Valider l'annonce</button>
+                            </form>
+                        </div>
+                    @empty
+                        <p>Aucune annonce en attente. 👌</p>
+                    @endforelse
+                    <hr style="margin: 40px 0; border: 1px solid #eee;">
+                    <h3>✅ Annonces déjà publiées ({{ $annonces_count }})</h3>
+                    @forelse($annoncesEnLigne as $item)
+                        <div class="item-list" style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 2px solid #1a1a1a; margin-bottom: 10px; background: #f9f9f9;">
+                            <div>
+                                <strong>{{ $item->titre }}</strong><br>
+                                <small style="color: #666;">
+                                    Par : {{ $item->user->prenom . ' ' . $item->user->nom ?? 'Inconnu' }} |
+                                    Publié le : {{ $item->created_at->format('d/m/Y') }}
+                                </small>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <form action="{{ route('annonces.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Supprimer définitivement cette annonce ?')">
+                                    @csrf @method('DELETE')
+                                    <button type="submit" style="background:none; border:none; color:#ff4d4d; font-weight:bold; cursor:pointer;">Supprimer</button>
+                                </form>
+                            </div>
+                        </div>
+                    @empty
+                        <p>Aucune annonce en ligne pour le moment.</p>
+                    @endforelse
+
+                </div>
+            </section>
+
+
+            <section id="gestion-avis" class="admin-section" style="display: none;">
+                <div class="admin-card">
+                    <h3>💬 Avis à modérer</h3>
+                    @forelse($avis_a_valider as $avi)
+                    <div class="suggestion-card" style="border-bottom: 2px solid #000; padding-bottom: 20px; margin-bottom: 20px;">
+                        <div class="suggestion-meta">
+                            <p><strong>Posté par :</strong> {{ $avi->user->prenom ?? 'Utilisateur supprimé' }} {{ $avi->user->nom ?? '' }}</p>
+                            <p><strong>Le :</strong> {{ $avi->created_at->format('d/m/Y à H:i') }}</p>
+                        </div>
+                        <div class="suggestion-content">
+                            <p><strong>Titre :</strong> {{ $avi->titre }}</p>
+                            <p>{{ $avi->description }}</p>
+                        </div>
+                        <form action="{{ route('avis.validate', $avi->id) }}" method="POST">
+                            @csrf @method('PATCH')
+                            <button type="submit" class="bouton-valider">Valider l'avis</button>
+                        </form>
+                    </div>
+                    @empty
+                        <p>Aucun avis en attente de modération. 👌</p>
+                    @endforelse
+
+                    <hr style="margin: 40px 0; border: 1px solid #eee;">
+
+                    <h3>✅ Avis déjà publiés ({{ $avis_count }})</h3>
+                    @forelse($avisEnLigne as $item)
+                        <div class="item-list" style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 2px solid #1a1a1a; margin-bottom: 10px; background: #f9f9f9;">
+                            <div>
+                                <strong>{{ $item->titre }}</strong><br>
+                                <small style="color: #666;">
+                                    Par : {{ $item->user->prenom . ' ' . $item->user->nom ?? 'Inconnu' }} |
+                                    Publié le : {{ $item->created_at->format('d/m/Y') }}
+                                </small>
+                            </div>
+                            <form action="{{ route('avis.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Supprimer cet avis ?')">
+                                @csrf @method('DELETE')
+                                <button type="submit" style="background:none; border:none; color:#ff4d4d; font-weight:bold; cursor:pointer;">Supprimer</button>
+                            </form>
+                        </div>
+                    @empty
+                        <p>Aucun avis en ligne pour le moment.</p>
+                    @endforelse
+                </div>
+            </section>
+
 
             @if(auth()->user()->role === 'super_admin')
                 <section id="gestion-admins" class="admin-section" style="display: none;">
@@ -211,6 +400,27 @@
                     </div>
                 </section>
             @endif
+
+            <section id="delete-section" class="admin-section" style="display: none;">
+                <h2 class="text-lg font-medium text-gray-900">Supprimer le compte</h2>
+                <p class="mt-1 text-sm text-gray-600">
+                    Une fois votre compte supprimé, toutes ses ressources et données (annonces, avis, profil répertoire) seront définitivement effacées.
+                </p>
+                <form action="{{ route('profile.destroy') }}" method="POST" onsubmit="return confirm('Es-tu vraiment sûr ? Cette action est irréversible.')">
+                    @csrf
+                    @method('delete')
+
+                    <div class="mt-6">
+                        <label for="password">Ton mot de passe pour confirmer :</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+
+                    <button type="submit" class="bouton-danger">
+                        SUPPRIMER MON COMPTE DÉFINITIVEMENT
+                    </button>
+                </form>
+            </section>
+
         </main>
     </div>
 

@@ -32,8 +32,7 @@ class User extends Authenticatable
     /**
      * Les métiers/catégories du profil (Répertoire)
      */
-    public function categories(): BelongsToMany
-    {
+    public function categories(): BelongsToMany {
         return $this->belongsToMany(Category::class);
     }
 
@@ -50,5 +49,14 @@ class User extends Authenticatable
 
     public function annonces(): HasMany {
         return $this->hasMany(Annonce::class);
+    }
+
+    public function informations()
+    {
+        return $this->hasMany(Information::class);
+    }
+
+    public static function superAdmins() {
+        return self::where('role', 'super-admin')->get();
     }
 }

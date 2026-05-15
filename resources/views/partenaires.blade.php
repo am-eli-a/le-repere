@@ -57,30 +57,72 @@
         <div class="partenaires-content">
             <div class="partenaires-textes">
                 <h2>Nos partenaires</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, ducimus earum ex explicabo laborum
-                    natus officiis quisquam quod repellat, saepe tempore voluptas voluptatem voluptates! Accusamus
-                    adipisci amet aspernatur culpa cum dignissimos dolore eum eveniet explicabo facere ipsa itaque iure
-                    labore laborum laudantium mollitia nam necessitatibus nihil nisi nulla, officiis optio, pariatur
-                    porro possimus provident quaerat quibusdam quisquam rem reprehenderit similique temporibus velit
-                    veniam voluptatem. A, ab accusantium aliquam deserunt doloribus ea error fuga id iste molestiae
-                    necessitatibus nihil odit, perferendis porro quos, soluta unde vero voluptas. Ab accusamus dicta
-                    doloremque et fugit ipsum numquam omnis rem? Blanditiis excepturi magnam minima minus odit tempore
-                    velit voluptate. Earum inventore modi neque, nobis provident quibusdam tenetur. Alias at blanditiis
-                    culpa cum doloremque dolorum ducimus, earum eius est impedit ipsa iste maiores, minus modi nam
-                    obcaecati omnis optio quasi quidem ratione sed tenetur voluptatibus. Cumque doloremque illum minima
-                    minus nam odit quaerat quasi quis ratione repudiandae, rerum saepe sed sit. Adipisci amet assumenda,
-                    at beatae consectetur deserunt dolor error eum inventore laboriosam molestiae necessitatibus non
-                    numquam placeat quasi ratione reiciendis repellat rerum, sint sit temporibus totam ut voluptatibus.
-                    Deserunt, omnis, voluptates? A alias amet aperiam assumenda, autem deserunt eos in magni maxime
-                    neque nostrum obcaecati odio possimus quisquam sapiente. Cupiditate fugiat ipsam nostrum nulla
-                    praesentium quam! Accusamus accusantium adipisci aliquam amet aspernatur aut autem culpa cupiditate
-                    debitis ducimus ea eius explicabo fuga impedit incidunt laboriosam maiores minus molestias mollitia
-                    neque nostrum odio quasi quis quo ratione sequi sit vel velit, voluptates voluptatum? Aliquam at
-                    delectus distinctio dolores eligendi eum ex fugiat fugit hic impedit iste laudantium minima nesciunt
-                    numquam, optio provident quae qui quibusdam quod sequi temporibus veniam vitae voluptates. Ad
-                    aliquam asperiores, beatae cum debitis dignissimos eius error esse et, expedita illo inventore
-                    libero magni molestias officiis omnis placeat quo rerum sequi, temporibus.</p>
+                <p>
+                    Le Repère collabore avec un réseau d'associations et de structures dynamiques pour booster la visibilité des talents locaux.
+                    Nos partenaires nous accompagnent sur chaque projet pour garantir des conditions de tournage professionnelles et innovantes.
+                    Chaque structure apporte son expertise unique, allant de la production technique à l'accompagnement artistique des membres.
+                    Ensemble, nous brisons les barrières du secteur audiovisuel pour créer de véritables opportunités de carrière.
+                    Découvrez leurs univers et rejoignez un écosystème solidaire dédié à la création.
+                </p>
             </div>
+
+            <div class="contact-partenaires" style="margin: 25px 0; display: flex; gap: 20px; align-items: center;">
+                <div class="contact-box">
+                    <img src="{{ asset('images/partenaires/phil_production.png') }}" alt="Phil Production">
+                    <div class="partenaires-textes">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, suscipit.</p>
+                        <div class="social-links" style="display: flex; gap: 15px;">
+                            <a href="https://instagram.com" target="_blank" title="Instagram">
+                                <img src="{{ asset('images/icons/instagram.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            </a>
+                            <a href="https://tiktok.com" target="_blank" title="TikTok">
+                                <img src="{{ asset('images/icons/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            </a>
+                            <a href="mailto:contact@exemple.com" title="Email">
+                                <img src="{{ asset('images/icons/mail.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-box">
+                    <img src="{{ asset('images/partenaires/sequence59.png') }}" alt="Séquence 59">
+                    <div class="partenaires-textes">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, suscipit.</p>
+                        <div class="social-links" style="display: flex; gap: 15px;">
+                            <a href="https://instagram.com" target="_blank" title="Instagram">
+                                <img src="{{ asset('images/icons/instagram.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            </a>
+                            <a href="https://tiktok.com" target="_blank" title="TikTok">
+                                <img src="{{ asset('images/icons/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            </a>
+                            <a href="mailto:contact@exemple.com" title="Email">
+                                <img src="{{ asset('images/icons/mail.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-box">
+                    <img src="{{ asset('images/partenaires/studiodu7.png') }}" alt="Studio du 7">
+                    <div class="partenaires-textes">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, suscipit.</p>
+                        <div class="social-links" style="display: flex; gap: 15px;">
+                            <a href="https://instagram.com" target="_blank" title="Instagram">
+                                <img src="{{ asset('images/icons/instagram.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            </a>
+                            <a href="https://tiktok.com" target="_blank" title="TikTok">
+                                <img src="{{ asset('images/icons/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            </a>
+                            <a href="mailto:contact@exemple.com" title="Email">
+                                <img src="{{ asset('images/icons/mail.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="{{ route('contact') }}" class="bouton" style="text-align: center">Faire partie des partenaires</a>
         </div>
     </div>
 @endsection

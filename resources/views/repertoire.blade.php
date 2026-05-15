@@ -17,12 +17,18 @@
                     <div class="repertoire-box">
                         @foreach($categorie->users as $user)
                         <div class="categorie-box">
-                            <img src="{{asset ('images/login.png')}}" alt="img acteur">
+                            @if($user->image)
+                                <img src="{{ asset('storage/' . $user->image) }}" loading="lazy" alt="Photo de {{ $user->prenom }}">
+                            @else
+                                <img src="{{ asset('images/login.png') }}" alt="Image par défaut">
+                            @endif
                             <p>{{ $user->prenom }} {{ $user->nom }}</p>
                             <p>{{ $user->age }}</p>
                             <p>{{ $user->lieu }}</p>
-                            <p>{{ $user->insta }}</p>
-                            <a href="{{ $user->lien_demo }}">Lien démo</a>
+                            <p><span>@</span>{{ ltrim($user->insta, '@') }}</p>
+                            @if($user->lien_demo)
+                                <a href="{{ $user->lien_demo }}" target="_blank">Lien démo</a>
+                            @endif
                         </div>
                         @endforeach
                     </div>

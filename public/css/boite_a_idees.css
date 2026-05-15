@@ -111,6 +111,27 @@
     gap: 10px;
 }
 
+.count-badge {
+    background-color: #efc849;
+    color: #1a1a1a;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    border: 1px solid #1a1a1a;
+}
+
+/* État quand l'utilisateur a déjà voté */
+.already-voted {
+    background-color: #efc849;
+    color: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+.already-voted .count-badge {
+    background-color: #1a1a1a;
+    color: #efc849;
+}
+
+/* Hover effects */
 .aprouve:hover {
     background-color: #efc849;
     color: #1a1a1a;
@@ -118,20 +139,9 @@
     transform: translate(-2px, -2px);
 }
 
-.aprouve::after {
-    content: "0";
-    background-color: #efc849;
-    color: #1a1a1a;
-    padding: 2px 8px;
-    margin-left: 5px;
-    font-size: 0.75rem;
-    border: 1px solid #1a1a1a;
-}
-
-.aprouve:hover::after {
+.aprouve:hover .count-badge {
     background-color: #1a1a1a;
     color: #efc849;
-    border-color: #efc849;
 }
 
 @media (max-width: 768px) {

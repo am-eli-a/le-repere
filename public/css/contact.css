@@ -34,7 +34,7 @@ form label {
 }
 
 form input,
-form textarea {
+form textarea, select {
     width: 100%;
     padding: 12px;
     margin-bottom: 25px;
@@ -49,7 +49,7 @@ form textarea {
 
 
 form input:focus,
-form textarea:focus {
+form textarea:focus, select:focus {
     outline: none;
     background-color: #ffffff;
     border-color: #efc849;
@@ -79,7 +79,6 @@ form textarea:focus {
 }
 
 ::placeholder {
-    color: #aaa;
     font-style: italic;
 }
 

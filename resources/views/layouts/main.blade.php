@@ -44,6 +44,25 @@
 </header>
 
 <main>
+    <div class="erreurs">
+        @if(session('success'))
+            <div class="brutal-alert success">
+                <span class="icon">✅</span> {{ session('success') }}
+            </div>
+        @endif
+
+        @if($errors->any())
+            <div class="brutal-alert error">
+                <span class="icon">⚠️</span>
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </div>
+
     @yield('content')
 </main>
 
@@ -58,7 +77,7 @@
             </div>
             <div class="footer-contact">
                 <h4>Contact</h4>
-                <p> Email : contact@truc.com</p>
+                <p> Email : sep7em.24@gmail.com</p>
                 <p> Tel : 00 00 00 00 00 </p>
             </div>
         </div>
@@ -85,8 +104,8 @@
                     <a href="#"><p>Instagram</p></a>
                 </div>
                 <div class="bloc-reseaux">
-                    <img src="{{ asset('/images/X.png') }}" alt="X">
-                    <a href="#"><p>X</p></a>
+                    <img src="{{ asset('/images/tiktok.png') }}" alt="Tiktok">
+                    <a href="#"><p>Tiktok</p></a>
                 </div>
             </div>
         </div>

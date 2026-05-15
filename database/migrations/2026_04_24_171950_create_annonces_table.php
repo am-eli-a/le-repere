@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('titre');
             $table->text('description');
             $table->text('lieu');
+            $table->date('date');
             $table->boolean('valide')->default(false);
             $table->timestamps();
         });

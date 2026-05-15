@@ -6,8 +6,12 @@
     <div class="avis-content">
         <h2>Les avis</h2>
         <p>N'hésitez pas à poster un avis :)</p>
-
-        <a href="{{ route('contact') }}" class="bouton">Poster un avis</a>
+        @auth
+            <a href="{{ route('dashboard') }}" class="bouton">Poster un avis</a>
+        @else
+            <p>Vous devez être connecté pour poster un avis.</p>
+            <a href="{{ route('login') }}" class="bouton">Se connecter</a>
+        @endauth
 
         <div class="avis-bloc">
             @foreach($touslesavis as $avis)

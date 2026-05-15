@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Avis extends Model
 {
     protected $fillable = ['user_id', 'nom', 'description', 'note'];
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

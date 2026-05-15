@@ -132,6 +132,26 @@
     color: #1a1a1a;
 }
 
+.annonce-affiche-container {
+    width: 100%;
+    height: 300px;
+    background-color: #000;
+    border: 3px solid #000;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.annonce-affiche-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.annonce-affiche-container img:hover {
+    transform: scale(1.05);
+}
+
 @media (max-width: 768px) {
     .annonce-bloc {
         grid-template-columns: 1fr;

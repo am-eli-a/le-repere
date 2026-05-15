@@ -17,7 +17,6 @@
                     <p>{{$info->contenu}}</p>
                     <img src={{asset ('/images/qrcode_le-mini-repere.JPG')}} class="qrcode">
                     <p>Date du post : {{ $info->created_at->format('d/m/Y') }}</p>
-                    <p>Post fait par : {{$info->user->name}}</p>
                 </div>
             @endforeach
 
