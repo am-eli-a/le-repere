@@ -26,6 +26,7 @@
                             <p>{{ $user->age }}</p>
                             <p>{{ $user->lieu }}</p>
                             <p><span>@</span>{{ ltrim($user->insta, '@') }}</p>
+                                <p>{{($user->email)}}</p>
                             @if($user->lien_demo)
                                 <a href="{{ $user->lien_demo }}" target="_blank">Lien démo</a>
                             @endif
