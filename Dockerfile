@@ -2,11 +2,14 @@ FROM php:8.4-fpm
 
 RUN apt-get update && apt-get install -y \
     libpq-dev \
+    libpng-dev \
+    libjpeg-dev \
     nginx \
     zip \
     unzip \
     git \
-    && docker-php-ext-install pdo_pgsql \
+    && docker-php-ext-configure gd --with-jpeg \
+    && docker-php-ext-install pdo_pgsql gd \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -36,7 +39,8 @@ http { \
     } \
 }' > /etc/nginx/nginx.conf
 
-RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache && \
+    chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 EXPOSE 8080
 
