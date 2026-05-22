@@ -1,9 +1,12 @@
 FROM php:8.4-fpm
 
-# 1. Installer Nginx et les dépendances pour PostgreSQL
+# 1. Installer Nginx, les outils de décompression (zip/unzip) et PostgreSQL
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     nginx \
+    zip \
+    unzip \
+    git \
     && docker-php-ext-install pdo_pgsql \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -12,11 +15,16 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /var/www/html
 COPY --chown=www-data:www-data . /var/www/html
 
-# 3. Installer Composer et les dépendances du projet
+# 3. Récupérer Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# 4. Autoriser Composer à tourner de manière fluide dans Docker
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
+# 5. Installer les dépendances PHP
 RUN composer install --no-dev --optimize-autoloader
 
-# 4. Configurer Nginx pour écouter sur le port 8080 et pointer sur /public
+# 6. Configurer Nginx pour écouter sur le port 8080 et pointer sur /public
 RUN echo 'server { \
     listen 8080 default_server; \
     root /var/www/html/public; \
@@ -33,10 +41,10 @@ RUN echo 'server { \
 }' > /etc/nginx/sites-available/default && \
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
-# 5. Donner les permissions d'écriture pour Laravel
+# 7. Donner les permissions d'écriture pour Laravel
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 EXPOSE 8080
 
-# 6. Démarrer PHP-FPM en arrière-plan (-D) et Nginx au premier plan
-CMD php-fpm -D && nginx -g "daemon off;"
+# 8. Utiliser le format JSON recommandé pour la commande finale
+CMD ["sh", "-c", "php-fpm -D && nginx -g 'daemon off;'"]
