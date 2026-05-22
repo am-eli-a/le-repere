@@ -74,10 +74,10 @@
                             <a href="https://www.instagram.com/phil_production?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
                                 <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
-                            <a href="https://tiktok.com" target="_blank" title="TikTok">
+                            <a href="https://www.tiktok.com/@philproduction" target="_blank" title="TikTok">
                                 <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
-                            <a href="mailto:contact@exemple.com" title="Email">
+                            <a href="mailto:phil.productionvideo@gmail.com" title="Email">
                                 <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
                         </div>
@@ -85,17 +85,17 @@
                 </div>
 
                 <div class="contact-box">
-                    <img src="{{ asset('images/partenaires/sequence59.png') }}" alt="Séquence 59">
+                    <img src="{{ asset('images/partenaires/sequence59_noir.png') }}" alt="Séquence 59">
                     <div class="partenaires-textes">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, suscipit.</p>
+                        <p>Association de distribution de films amateurs et indépendants lillois.</p>
                         <div class="social-links" style="display: flex; gap: 15px;">
                             <a href="https://www.instagram.com/sequence_59?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
                                 <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
-                            <a href="https://tiktok.com" target="_blank" title="TikTok">
+                            <a href="https://www.tiktok.com/@squence.59" target="_blank" title="TikTok">
                                 <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
-                            <a href="mailto:contact@exemple.com" title="Email">
+                            <a href="mailto:sequence.59lille@gmail.com" title="Email">
                                 <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
                         </div>

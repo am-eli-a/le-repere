@@ -1,39 +1,32 @@
-FROM php:8.4-apache
+FROM serversideup/php:8.4-fpm-nginx
 
-# 1. Installation des dépendances système pour PostgreSQL
+# 1. Passer en root pour installer les dépendances PostgreSQL
+USER root
+
 RUN apt-get update && apt-get install -y \
     libpq-dev \
-    libpng-dev \
-    zip \
-    unzip \
-    git \
-    && docker-php-ext-install pdo pdo_pgsql gd
+    && docker-php-ext-install pdo_pgsql \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# 2. Activation du module rewrite
-RUN a2enmod rewrite
+# 2. Configurer le dossier racine pour Laravel (indispensable pour Nginx)
+ENV DOCUMENT_ROOT=/var/www/html/public
 
-# 3. Copie des fichiers (y compris ton dossier public/build compilé sur ton PC)
-COPY . /var/www/html
+# 3. Copier les fichiers du projet dans le conteneur
+COPY --chown=www-data:www-data . /var/www/html
 
-# 4. Configuration d'Apache
-RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
+# 4. Repasser sur l'utilisateur par défaut pour exécuter Composer et Laravel
+USER www-data
 
-# 5. Installation de Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# 5. Installer les dépendances PHP (sans les outils de dev local)
 RUN composer install --no-dev --optimize-autoloader
 
-# 6. Permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# 6. Exposer le port par défaut que Railway va écouter
+EXPOSE 8080
 
-EXPOSE 80
-
-# 7. Script de démarrage (Config clear + Migration)
-RUN echo '#!/bin/sh\n\
-php artisan config:clear\n\
-php artisan cache:clear\n\
-php artisan migrate --force\n\
-apache2-foreground' > /usr/local/bin/start.sh
-
-RUN chmod +x /usr/local/bin/start.sh
-
-CMD ["/usr/local/bin/start.sh"]
+# 7. Script de démarrage : Nettoyage, migrations automatiques et lancement du serveur
+CMD php artisan config:clear && \
+    php artisan cache:clear && \
+    php artisan view:clear && \
+    php artisan migrate --force && \
+    docker-php-entrypoint
