@@ -1,32 +1,36 @@
-FROM serversideup/php:8.4-fpm-nginx
+FROM php:8.4-fpm-alpine
 
-# 1. Passer en root pour installer les dépendances PostgreSQL
-USER root
-
+# 1. Installer les dépendances pour PostgreSQL et extensions PHP
 RUN apt-get update && apt-get install -y \
     libpq-dev \
-    && docker-php-ext-install pdo_pgsql \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    nginx \
+    && docker-php-ext-install pdo_pgsql
 
-# 2. Configurer le dossier racine pour Laravel (indispensable pour Nginx)
-ENV DOCUMENT_ROOT=/var/www/html/public
-
-# 3. Copier les fichiers du projet dans le conteneur
+# 2. Configurer le dossier racine de Laravel pour Nginx
+WORKDIR /var/www/html
 COPY --chown=www-data:www-data . /var/www/html
 
-# 4. Repasser sur l'utilisateur par défaut pour exécuter Composer et Laravel
-USER www-data
-
-# 5. Installer les dépendances PHP (sans les outils de dev local)
+# 3. Installer Composer et les dépendances du projet
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader
 
-# 6. Exposer le port par défaut que Railway va écouter
+# 4. Configurer Nginx pour lire le port dynamique de Railway ($PORT)
+RUN echo 'server { \
+    listen 8080; \
+    root /var/www/html/public; \
+    index index.php index.html; \
+    location / { try_files $uri $uri/ /index.php?$query_string; } \
+    location ~ \.php$ { \
+        include fastcgi_params; \
+        fastcgi_pass 127.0.0.1:9000; \
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; \
+    } \
+}' > /etc/nginx/sites-available/default
+
 EXPOSE 8080
 
-# 7. Script de démarrage : Nettoyage, migrations automatiques et lancement du serveur
+# 5. Lancement de PHP-FPM et de Nginx en simultané
 CMD php artisan config:clear && \
     php artisan cache:clear && \
-    php artisan view:clear && \
     php artisan migrate --force && \
-    docker-php-entrypoint
+    php-fpm -D && nginx -g "daemon off;"
