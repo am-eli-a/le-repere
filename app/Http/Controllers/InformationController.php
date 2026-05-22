@@ -28,9 +28,12 @@ class InformationController extends Controller
         $path = null;
         if ($request->hasFile('affiche')) {
             $file = $request->file('affiche');
-            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('uploads/informations'), $filename);
-            $path = 'uploads/informations/' . $filename;
+            // On ajoute le préfixe info_
+            $filename = 'info_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+            // On déplace DIRECTEMENT dans public/uploads/
+            $file->move(public_path('uploads'), $filename);
+            $path = 'uploads/' . $filename;
         }
 
         $info = auth()->user()->informations()->create([

@@ -42,9 +42,12 @@ class ProfileController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('uploads/avatars'), $filename);
-            $user->image = 'uploads/avatars/' . $filename;
+            // On ajoute le préfixe avatar_ dans le nom du fichier
+            $filename = 'avatar_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+            // On déplace DIRECTEMENT dans public/uploads/
+            $file->move(public_path('uploads'), $filename);
+            $user->image = 'uploads/' . $filename;
         }
 
         if ($request->filled('password')) {
