@@ -60,7 +60,6 @@
                 <p>
                     Le Repère collabore avec un réseau d'associations et de structures dynamiques pour booster la visibilité des talents locaux.
                     Nos partenaires nous accompagnent sur chaque projet pour garantir des conditions de tournage professionnelles et innovantes.
-                    Chaque structure apporte son expertise unique, allant de la production technique à l'accompagnement artistique des membres.
                     Ensemble, nous brisons les barrières du secteur audiovisuel pour créer de véritables opportunités de carrière.
                     Découvrez leurs univers et rejoignez un écosystème solidaire dédié à la création.
                 </p>
@@ -72,14 +71,14 @@
                     <div class="partenaires-textes">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, suscipit.</p>
                         <div class="social-links" style="display: flex; gap: 15px;">
-                            <a href="https://instagram.com" target="_blank" title="Instagram">
-                                <img src="{{ asset('images/icons/instagram.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            <a href="https://www.instagram.com/phil_production?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
+                                <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
                             <a href="https://tiktok.com" target="_blank" title="TikTok">
-                                <img src="{{ asset('images/icons/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                                <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
                             <a href="mailto:contact@exemple.com" title="Email">
-                                <img src="{{ asset('images/icons/mail.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                                <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
                         </div>
                     </div>
@@ -90,14 +89,14 @@
                     <div class="partenaires-textes">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, suscipit.</p>
                         <div class="social-links" style="display: flex; gap: 15px;">
-                            <a href="https://instagram.com" target="_blank" title="Instagram">
-                                <img src="{{ asset('images/icons/instagram.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            <a href="https://www.instagram.com/sequence_59?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
+                                <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
                             <a href="https://tiktok.com" target="_blank" title="TikTok">
-                                <img src="{{ asset('images/icons/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                                <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
                             <a href="mailto:contact@exemple.com" title="Email">
-                                <img src="{{ asset('images/icons/mail.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                                <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
                         </div>
                     </div>
@@ -108,14 +107,14 @@
                     <div class="partenaires-textes">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, suscipit.</p>
                         <div class="social-links" style="display: flex; gap: 15px;">
-                            <a href="https://instagram.com" target="_blank" title="Instagram">
-                                <img src="{{ asset('images/icons/instagram.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            <a href="https://www.instagram.com/studiodu7lille?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
+                                <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
                             <a href="https://tiktok.com" target="_blank" title="TikTok">
-                                <img src="{{ asset('images/icons/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                                <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
                             <a href="mailto:contact@exemple.com" title="Email">
-                                <img src="{{ asset('images/icons/mail.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                                <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
                             </a>
                         </div>
                     </div>

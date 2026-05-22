@@ -39,7 +39,7 @@ class InformationController extends Controller
         $emails = User::pluck('email');
         $details = [
             'nom' => "L'équipe Le Repère",
-            'message' => "Une nouvelle info importante : " . $info->titre,
+            'message' => "Une nouvelle info vient d'être postée : " . $info->titre,
         ];
 
         if ($emails->isNotEmpty()) {

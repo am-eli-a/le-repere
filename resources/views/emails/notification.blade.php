@@ -1,18 +1,27 @@
-<div style="background-color: #1a1a1a; color: #ffffff; padding: 30px; font-family: 'Helvetica', sans-serif; border-radius: 10px;">
-    <h1 style="color: #efc849; border-bottom: 2px solid #efc849; padding-bottom: 10px;">
-    Le Repère - Nouvelle Notification
-</h1>
-    <p style="font-size: 16px;">Bonjour l'équipe,</p>
-    <p style="background: #333; padding: 15px; border-left: 4px solid #efc849;">
-        <strong>Action :</strong> {{ $subject }} <br>
-        <strong>Utilisateur :</strong> {{ $details['nom'] ?? 'Anonyme' }} <br>
-        <strong>Email :</strong> {{ $details['email'] ?? 'Non fourni' }}
-    </p>
-    <div style="margin-top: 20px;">
-        <strong>Message :</strong><br>
-        <p style="font-style: italic; color: #ccc;">"{{ $details['message'] ?? $details['description'] ?? 'Pas de texte fourni' }}"</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #1a1a1a; background-color: #fdfcf0; padding: 20px; }
+        .mail-box { background: #ffffff; border: 3px solid #1a1a1a; box-shadow: 6px 6px 0 #1a1a1a; padding: 30px; max-width: 600px; margin: 0 auto; }
+        .footer { margin-top: 30px; font-size: 0.8rem; color: #666; text-align: center; border-top: 2px dashed #efc849; padding-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="mail-box">
+    <div class="content" style="white-space: pre-line; font-size: 1rem;">
+        <h1>Le Repère - Nouvelle notification</h1>
+        <img src="{{ asset('images/logo_lerepere.png') }}" loading="lazy">
+        {{ $details['message'] }}
     </div>
-    <p style="margin-top: 30px; font-size: 12px; color: #777;">
-        Ceci est un mail automatique envoyé aux Super-Admins.
-    </p>
+
+    <div class="footer">
+        <p>Ceci est un mail automatique, merci de ne pas y répondre :)</p>
+        <p>Pour ne plus recevoir ces alertes, vous pouvez vous désabonner</p>
+    </div>
 </div>
+
+</body>
+</html>

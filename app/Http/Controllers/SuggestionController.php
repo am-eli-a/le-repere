@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Annonce;
 use App\Models\Suggestion;
 use Illuminate\Http\Request;
 use App\Mail\ContactMessageMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
-
 
 class SuggestionController extends Controller
 {
@@ -30,27 +28,29 @@ class SuggestionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $data = $request->validate([
             'titre' => 'nullable|max:255',
             'description' => 'required|min:10'
         ]);
 
         $suggestion = auth()->user()->suggestions()->create([
-            'titre' => $data['titre'],
+            'titre' => $data['titre'] ?? 'Idée sans titre',
             'description' => $data['description'],
         ]);
 
         $details = [
-            'nom'     => auth()->user()->prenom . ' ' . auth()->user()->nom,
-            'email'   => auth()->user()->email,
-            'message' => $suggestion->description,
+            'nom' => auth()->user()->prenom . ' ' . auth()->user()->nom,
+            'email' => auth()->user()->email,
+            'message' => "Une nouvelle suggestion a été postée [Titre : " . $suggestion->titre . "] :\n\n" . $suggestion->description,
         ];
 
-        $superAdmins = User::where('role', 'super_admin')->get();
+        // Correction : Récupération stricte des e-mails textuels
+        $superAdmins = User::where('role', 'super_admin')->pluck('email');
 
         if ($superAdmins->isNotEmpty()) {
-            Mail::bcc($superAdmins)->send(new ContactMessageMail($details, "Nouvelle suggestion posté !"));
+            Mail::bcc($superAdmins)->send(new ContactMessageMail($details, "Nouvelle suggestion postée !"));
         }
 
         return back()->with('success', 'Merci pour votre suggestion !');
@@ -66,9 +66,9 @@ class SuggestionController extends Controller
 
         if ($suggestion->user) {
             $details = [
-                'nom'     => $suggestion->user->prenom,
-                'message' => "Bonne nouvelle ! Votre suggestion « {$suggestion->titre} » vient d'être validée.",
-                'email'   => $suggestion->user->email,
+                'nom' => "L'équipe Le Repère",
+                'message' => "Bonne nouvelle ! Votre suggestion « {$suggestion->titre} » vient d'être validée et mise en ligne.",
+                'email' => $suggestion->user->email,
             ];
 
             Mail::to($suggestion->user->email)->send(new ContactMessageMail($details, "Votre suggestion est en ligne !"));
@@ -117,7 +117,6 @@ class SuggestionController extends Controller
     public function toggleLike(Suggestion $suggestion)
     {
         $user = auth()->user();
-
         $suggestion->likes()->toggle($user->id);
 
         return back();

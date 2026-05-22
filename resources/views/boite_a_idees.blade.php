@@ -39,17 +39,6 @@
                     </div>
                 </div>
             @endforeach
-
-            <div class="boite_idee-box">
-                <h3>Titre</h3>
-                <p>Description de l'idée :</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi itaque magni odit, quaerat
-                    similique suscipit totam? Amet culpa, eius fuga incidunt ipsum labore quibusdam rem veniam! A alias
-                    aut sit!</p>
-                <div class="vote">
-                    <button class="aprouve">Je valide !</button>
-                </div>
-            </div>
         </div>
 
     </div>

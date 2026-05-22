@@ -1,3 +1,4 @@
+/* --- CSS d'origine conservé --- */
 .partenaires-container {
     display: flex;
     align-items: flex-start;
@@ -67,6 +68,7 @@
     text-align: justify;
 }
 
+/* --- Slider de logos --- */
 .logo-slider-container {
     width: 100vw;
     max-width: 100%;
@@ -98,11 +100,6 @@
     height: 150px;
     margin-bottom: 15px;
     object-fit: contain;
-    transition: filter 0.3s;
-}
-
-.logo-slide:hover img {
-    filter: grayscale(0%);
 }
 
 .logo-slide p {
@@ -115,6 +112,97 @@
 }
 
 @keyframes scrollLogos {
-    0% {transform: translateX(0);}
-    100% {transform: translateX(-1020px);}
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-1020px); }
+}
+
+/* ==========================================================================
+   NOUVEAU STYLE : Grille des fiches partenaires et réseaux
+   ========================================================================== */
+
+/* Conteneur global qui accueille la liste des blocs de contact */
+.contact-partenaires {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 35px 0 !important; /* Force les marges demandées en inline */
+    align-items: stretch !important; /* Force l'alignement pour uniformiser la hauteur */
+}
+
+/* Structure de chaque carte de partenaire */
+.contact-box {
+    background-color: #fdfcf0; /* Teinte rappelant le fond global léger */
+    border: 2px solid #1a1a1a;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 4px 4px 0 #1a1a1a;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-box:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0 #efc849;
+}
+
+/* Style de l'image de la structure dans sa boîte */
+.contact-box > img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border: 2px solid #1a1a1a;
+    background: #ffffff;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+/* Ajustement du paragraphe texte interne à la boîte */
+.contact-box .partenaires-textes p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* Zone des boutons de réseaux sociaux */
+.social-links {
+    justify-content: center;
+    margin-top: auto; /* Pousse les icônes en bas de la boîte si le texte est court */
+}
+
+.social-links a {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.social-links a:hover {
+    transform: scale(1.15);
+}
+
+/* Effets sur les icônes réseaux au survol */
+.social-links a img {
+    display: block;
+    filter: grayscale(0%);
+    transition: filter 0.2s ease;
+}
+
+/* Optionnel : Si tu veux qu'elles passent en jaune au survol (style Brutaliste) */
+.social-links a:hover img {
+    filter: brightness(0) saturate(100%) invert(86%) sepia(26%) saturate(1031%) hue-rotate(352deg) brightness(97%) contrast(92%);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .partenaires-container {
+        flex-direction: column;
+    }
+
+    .fil-d_actu {
+        width: 100%;
+        flex: none;
+    }
 }

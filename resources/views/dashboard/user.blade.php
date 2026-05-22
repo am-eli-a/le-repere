@@ -149,7 +149,7 @@
                             <br>
                             <br>
                             <br>
-                            <a href="{{ route('category.request') }}" class="prevenir">Prévenir les administrateurs</a>
+                            <a href="{{ route('contact') }}" class="prevenir">Prévenir les administrateurs</a>
                         </p>
                         <button type="submit" class="btn-brutal-join">
                             APPARAÎTRE DANS LE RÉPERTOIRE

@@ -26,7 +26,7 @@
                     <h3>{{$annonce->titre}}</h3>
                     <p>Description de l'annonce :</p>
                     <p>{{$annonce->description}}</p>
-                    <p>Date : {{$annonce->date}}</p>
+                        <p>Date : {{ $annonce->date ? \Carbon\Carbon::parse($annonce->date)->format('d/m/Y') : 'Non spécifiée' }}</p>
                     <p>Lieu : {{$annonce->lieu}}</p>
                         <div class="annonce-infos">
                             <p><strong>Publié par :</strong> {{ $annonce->user->prenom }} {{ $annonce->user->nom }}</p>
@@ -43,24 +43,6 @@
                         </div>
                 </div>
             @endforeach
-
-            <div class="annonce-box">
-                <h3>Titre</h3>
-                <p>Description de l'annonce :</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi itaque magni odit, quaerat
-                    similique suscipit totam? Amet culpa, eius fuga incidunt ipsum labore quibusdam rem veniam! A alias
-                    aut sit!</p>
-                <p>Date</p>
-                <p>Lieux</p>
-                <p>Participants :</p>
-                <li>Participant 1</li>
-                <li>Participant 2</li>
-                <li>Participant 3</li>
-                <p>Contact des participants :</p>
-                <li><a href="">Contact du participant 1</a></li>
-                <li><a href="">Contact du participant 2</a></li>
-                <li><a href="">Contact du participant 3</a></li>
-            </div>
         </div>
     </div>
 @endsection

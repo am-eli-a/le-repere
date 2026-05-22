@@ -15,7 +15,11 @@
                 <div class="information-box">
                     <h3>{{$info->titre}}</h3>
                     <p>{{$info->contenu}}</p>
-                    <img src={{asset ('/images/qrcode_le-mini-repere.JPG')}} class="qrcode">
+                    @if($info->image)
+                        <div class="annonce-affiche-container">
+                            <img src="{{ asset('storage/' . $info->image) }}" alt="Image pour {{ $info->titre }}">
+                        </div>
+                    @endif
                     <p>Date du post : {{ $info->created_at->format('d/m/Y') }}</p>
                 </div>
             @endforeach
@@ -29,7 +33,7 @@
 
             <div class="information-box">
                 <h3>Partenariats</h3>
-                <p>Vous êtes un groupe, un collectif, une association, une société ou autre et vous souhaitez devenir partenaire du Repère ? C'est possible ! Il suffit de contacter Septem 24 par mail : sep7em.24@gmail.com, ou via le formulaire de contact</p>
+                <p>Vous êtes un groupe, un collectif, une association, une société ou autre et vous souhaitez devenir partenaire du Repère ? C'est possible ! Il suffit de contacter Septem 24 par mail : sep7em.24@gmail.com, ou via le formulaire de contact.</p>
                 <a href="{{ route('contact') }}" class="bouton">Nous contacter</a>
                 <p>Date du post : xx.xx.xxxx</p>
             </div>

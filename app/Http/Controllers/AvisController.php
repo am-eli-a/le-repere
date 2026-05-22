@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Annonce;
 use App\Models\Avis;
-use App\Models\Suggestion;
 use Illuminate\Http\Request;
 use App\Mail\ContactMessageMail;
 use App\Models\User;
@@ -32,13 +30,15 @@ class AvisController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $data = $request->validate([
             'description' => 'required|max:500',
             'note' => 'required|integer|min:1|max:5'
         ]);
 
         $avis = auth()->user()->avis()->create([
+            'nom' => auth()->user()->prenom . ' ' . auth()->user()->nom,
             'description' => $data['description'],
             'note' => $data['note'],
         ]);
@@ -46,10 +46,11 @@ class AvisController extends Controller
         $details = [
             'nom' => auth()->user()->prenom . ' ' . auth()->user()->nom,
             'email' => auth()->user()->email,
-            'message' => $avis->description,
+            'message' => "Un nouvel avis (" . $avis->note . "/5) a été soumis :\n\n" . $avis->description,
         ];
 
-        $superAdmins = User::where('role', 'super_admin')->get();
+        // Correction : On extrait uniquement les adresses mails
+        $superAdmins = User::where('role', 'super_admin')->pluck('email');
 
         if ($superAdmins->isNotEmpty()) {
             Mail::bcc($superAdmins)->send(new ContactMessageMail($details, "Nouvel Avis sur Le Repère"));
@@ -58,6 +59,9 @@ class AvisController extends Controller
         return back()->with('success', 'Votre avis a été envoyé :)');
     }
 
+    /**
+     * Validate an avis.
+     */
     public function validateAvis(Avis $avis)
     {
         if (auth()->user()->role !== 'super_admin' && auth()->user()->role !== 'admin') {
@@ -66,12 +70,17 @@ class AvisController extends Controller
 
         $avis->update(['valide' => true]);
 
+        // Correction : Remplacement de $avis->titre (qui n'existe pas) par un extrait de sa description
+        $extrait = mb_strimwidth($avis->description, 0, 30, "...");
+
         $details = [
-            'nom'     => $avis->user->prenom,
-            'message' => "Bonne nouvelle ! Votre avis « {$avis->titre} » vient d'être validé par l'équipe et est désormais visible sur le site.",
+            'nom' => "L'équipe Le Repère",
+            'message' => "Bonne nouvelle ! Votre avis « {$extrait} » vient d'être validé par l'équipe et est désormais visible sur le site.",
         ];
 
-        Mail::to($avis->user->email)->send(new ContactMessageMail($details, "Votre avis est en ligne !"));
+        if ($avis->user) {
+            Mail::to($avis->user->email)->send(new ContactMessageMail($details, "Votre avis est en ligne !"));
+        }
 
         return back()->with('success', 'L\'avis a été publié et l\'auteur a été averti.');
     }
