@@ -40,14 +40,12 @@ http { \
 }' > /etc/nginx/nginx.conf
 
 # 5. Créer les sous-dossiers d'uploads requis, droits et permissions
-RUN mkdir -p /var/www/html/public/uploads/avatars \
-             /var/www/html/public/uploads/profiles \
-             /var/www/html/public/uploads/affiches \
-             /var/www/html/public/uploads/informations && \
+# 5. Créer le dossier racine d'uploads, droits et permissions absolus
+RUN mkdir -p /var/www/html/public/uploads && \
     chown -R www-data:www-data /var/www/html/storage \
                                /var/www/html/bootstrap/cache \
                                /var/www/html/public/uploads && \
-    chmod -R 775 /var/www/html/storage \
+    chmod -R 777 /var/www/html/storage \
                   /var/www/html/bootstrap/cache \
                   /var/www/html/public/uploads
 
