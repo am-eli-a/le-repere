@@ -65,7 +65,7 @@
                 </p>
             </div>
 
-            <div class="contact-partenaires" style="margin: 25px 0; display: flex; gap: 20px; align-items: center;">
+            <div style="display: flex; gap: 20px; align-items: stretch; justify-content: space-between; flex-wrap: wrap;">
                 <div class="contact-box">
                     <img src="{{ asset('images/partenaires/phil_production.png') }}" alt="Phil Production">
                     <div class="partenaires-textes">
