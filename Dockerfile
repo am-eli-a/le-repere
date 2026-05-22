@@ -22,9 +22,5 @@ RUN composer install --no-dev --optimize-autoloader
 # 6. Exposer le port 8080
 EXPOSE 80
 
-# 7. Lancement des commandes Laravel et du serveur
-CMD php artisan config:clear && \
-    php artisan cache:clear && \
-    php artisan view:clear && \
-    php artisan migrate --force && \
-    docker-php-entrypoint
+# Remplace la ligne CMD par celle-ci :
+CMD php artisan migrate --force && docker-php-entrypoint
