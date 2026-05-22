@@ -12,10 +12,6 @@ RUN apt-get update && apt-get install -y \
 # 2. Configurer le dossier racine pour Laravel
 ENV DOCUMENT_ROOT=/var/www/html/public
 
-# 3. Forcer l'image à écouter sur le port 8080 en interne
-ENV PORT=8080
-ENV MIX_PORT=8080
-
 # 4. Copier les fichiers du projet
 COPY --chown=www-data:www-data . /var/www/html
 
@@ -24,7 +20,7 @@ USER www-data
 RUN composer install --no-dev --optimize-autoloader
 
 # 6. Exposer le port 8080
-EXPOSE 8080
+EXPOSE 80
 
 # 7. Lancement des commandes Laravel et du serveur
 CMD php artisan config:clear && \
