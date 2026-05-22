@@ -20,7 +20,7 @@ USER www-data
 RUN composer install --no-dev --optimize-autoloader
 
 # 6. Exposer le port 8080
-EXPOSE 80
+EXPOSE 8080
 
-# Remplace la ligne CMD par celle-ci :
-CMD php artisan migrate --force && docker-php-entrypoint
+# 7. Commande finale simplifiée : on lance UNIQUEMENT l'entrypoint officiel
+CMD ["docker-php-entrypoint"]
