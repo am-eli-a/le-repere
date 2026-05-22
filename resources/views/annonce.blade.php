@@ -20,7 +20,7 @@
                 <div class="annonce-box">
                     @if($annonce->affiche)
                         <div class="annonce-affiche-container">
-                            <img src="{{ asset('storage/' . $annonce->affiche) }}" loading="lazy" alt="Affiche {{ $annonce->titre }}">
+                            <img src="{{ asset($annonce->affiche) }}" alt="Affiche" loading="lazy" {{ $annonce->titre }}">
                         </div>
                     @endif
                     <h3>{{$annonce->titre}}</h3>

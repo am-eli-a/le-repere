@@ -42,10 +42,14 @@ class AnnonceController extends Controller
 
         $path = null;
         if ($request->hasFile('affiche')) {
-            $path = $request->file('affiche')->store('affiches', 'public');
+            $file = $request->file('affiche');
+            // Génère un nom unique pour éviter les collisions
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            // Déplacement vers le volume persistant
+            $file->move(public_path('uploads/affiches'), $filename);
+            $path = 'uploads/affiches/' . $filename;
         }
 
-        // Crée l'annonce liée à l'utilisateur connecté
         $annonce = auth()->user()->annonces()->create([
             'titre' => $data['titre'],
             'description' => $data['description'],
@@ -54,14 +58,12 @@ class AnnonceController extends Controller
             'affiche' => $path,
         ]);
 
-        // Construction propre du tableau details avec la clé 'message'
         $details = [
             'nom' => auth()->user()->prenom . ' ' . auth()->user()->nom,
             'email' => auth()->user()->email,
             'message' => "Une nouvelle annonce vient d'être proposée par " . auth()->user()->prenom . " : " . $annonce->titre . "\n\n" . $annonce->description,
         ];
 
-        // Récupération uniquement des chaînes de caractères d'e-mails
         $allUser = User::pluck('email');
 
         if ($allUser->isNotEmpty()) {

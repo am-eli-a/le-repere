@@ -17,7 +17,7 @@
                     <p>{{$info->contenu}}</p>
                     @if($info->image)
                         <div class="annonce-affiche-container">
-                            <img src="{{ asset('storage/' . $info->image) }}" alt="Image pour {{ $info->titre }}">
+                            <img src="{{ asset($info->image) }} alt="Image pour {{ $info->titre }}">
                         </div>
                     @endif
                     <p>Date du post : {{ $info->created_at->format('d/m/Y') }}</p>

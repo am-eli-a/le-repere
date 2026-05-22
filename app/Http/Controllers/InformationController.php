@@ -27,7 +27,10 @@ class InformationController extends Controller
 
         $path = null;
         if ($request->hasFile('affiche')) {
-            $path = $request->file('affiche')->store('informations', 'public');
+            $file = $request->file('affiche');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/informations'), $filename);
+            $path = 'uploads/informations/' . $filename;
         }
 
         $info = auth()->user()->informations()->create([

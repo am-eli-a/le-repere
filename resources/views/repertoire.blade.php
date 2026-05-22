@@ -18,7 +18,7 @@
                         @foreach($categorie->users as $user)
                         <div class="categorie-box">
                             @if($user->image)
-                                <img src="{{ asset('storage/' . $user->image) }}" loading="lazy" alt="Photo de {{ $user->prenom }}">
+                                <img src="{{ asset($user->image) }}" loading="lazy" alt="Photo de {{ $user->prenom }}">
                             @else
                                 <img src="{{ asset('images/login.png') }}" alt="Image par défaut">
                             @endif

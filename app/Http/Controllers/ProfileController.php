@@ -41,8 +41,10 @@ class ProfileController extends Controller
         $user->fill($request->except(['password', 'image']));
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('avatars', 'public');
-            $user->image = $path;
+            $file = $request->file('image');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/avatars'), $filename);
+            $user->image = 'uploads/avatars/' . $filename;
         }
 
         if ($request->filled('password')) {
