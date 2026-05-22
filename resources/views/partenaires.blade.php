@@ -69,7 +69,7 @@
                 <div class="contact-box">
                     <img src="{{ asset('images/partenaires/phil_production.png') }}" alt="Phil Production">
                     <div class="partenaires-textes">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, suscipit.</p>
+                        <p>Phil Production est une association d'audiovisuel agréée <strong>Université de Lille</strong> qui aime proposer des projets vidéos menés par des passionnés amateurs. Sans budget, sans diplôme et sans prétention, ils proposent films et mini-séries les plus aboutis possibles dans un seul but : faire de leurs rêves une réalité.</p>
                         <div class="social-links" style="display: flex; gap: 15px;">
                             <a href="https://www.instagram.com/phil_production?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
                                 <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
