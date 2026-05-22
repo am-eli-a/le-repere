@@ -45,5 +45,5 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 EXPOSE 8080
 
-# 6. Lancement de PHP-FPM et de Nginx
-CMD ["sh", "-c", "php-fpm -D && nginx -g 'daemon off;'"]
+# Remplace la ligne CMD tout en bas par celle-ci :
+CMD php artisan migrate --force && php-fpm -D && nginx -g "daemon off;"
