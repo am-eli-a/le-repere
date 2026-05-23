@@ -109,8 +109,9 @@ class SuggestionController extends Controller
             abort(403, "Vous n'avez pas le droit de supprimer cette suggestion.");
         }
 
-        $suggestion->delete();
-        return back()->with('success', 'Suggestion supprimée avec succès.');
+        $suggestion->forceDelete();
+
+        return back()->with('success', 'Suggestion supprimée définitivement.');
     }
 
     public function toggleLike(Suggestion $suggestion)
