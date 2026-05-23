@@ -106,7 +106,7 @@ class SuggestionController extends Controller
      */
     public function destroy(Suggestion $suggestion)
     {
-        if (auth()->id() !== $suggestion->user_id && auth()->user()->role !== 'super_admin') {
+        if (auth()->id() !== $suggestion->user_id && auth()->user()->role !== 'super_admin' && auth()->user()->role !== 'admin') {
             abort(403, "Vous n'avez pas le droit de supprimer cette suggestion.");
         }
 

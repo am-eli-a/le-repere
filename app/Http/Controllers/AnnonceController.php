@@ -123,7 +123,7 @@ class AnnonceController extends Controller
     public function destroy(Annonce $annonce)
     {
         // Vérification de sécurité : l'auteur ou le super_admin uniquement
-        if (auth()->id() !== $annonce->user_id && auth()->user()->role !== 'super_admin') {
+        if (auth()->id() !== $annonce->user_id && auth()->user()->role !== 'super_admin' && auth()->user()->role !== 'admin') {
             abort(403, "Vous n'avez pas le droit de supprimer cette annonce.");
         }
 

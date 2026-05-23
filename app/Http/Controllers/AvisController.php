@@ -114,7 +114,7 @@ class AvisController extends Controller
      */
     public function destroy(Avis $avis)
     {
-        if (auth()->id() !== $avis->user_id && auth()->user()->role !== 'super_admin') {
+        if (auth()->id() !== $avis->user_id && auth()->user()->role !== 'super_admin' && auth()->user()->role !== 'admin') {
             abort(403, "Vous n'avez pas le droit de supprimer cet avis.");
         }
 

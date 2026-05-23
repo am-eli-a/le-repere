@@ -66,10 +66,10 @@
                 </p>
             </div>
 
-            <div style="display: flex; gap: 30px; align-items: stretch; justify-content: space-between; margin-bottom: 40px;">
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: stretch; justify-content: space-between; margin-bottom: 40px;">
                 <div class="contact-box" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #000; padding: 25px; background: #fff; box-shadow: 5px 5px 0px #000;">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                        <div style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                        <div style="display: flex; align-items: center; justify-content: center;">
                             <img src="{{ asset('images/partenaires/phil_production.png') }}" alt="Phil Production" style="max-height: 100%; max-width: 100%; object-fit: contain;">
                         </div>
                         <div class="partenaires-textes" style="min-height: 100px; display: flex; align-items: center;">
@@ -78,20 +78,20 @@
                     </div>
                     <div class="social-links" style="display: flex; gap: 15px; justify-content: center; margin-top: 25px;">
                         <a href="https://www.instagram.com/phil_production?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
-                            <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
                         <a href="https://www.tiktok.com/@philproduction" target="_blank" title="TikTok">
-                            <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
                         <a href="mailto:phil.productionvideo@gmail.com" title="Email">
-                            <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
                     </div>
                 </div>
 
                 <div class="contact-box" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #000; padding: 25px; background: #fff; box-shadow: 5px 5px 0px #000;">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                        <div style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                        <div style="display: flex; align-items: center; justify-content: center;">
                             <img src="{{ asset('images/partenaires/sequence59_noir.png') }}" alt="Séquence 59" style="max-height: 100%; max-width: 100%; object-fit: contain;">
                         </div>
                         <div class="partenaires-textes" style="min-height: 100px; display: flex; align-items: center;">
@@ -100,20 +100,20 @@
                     </div>
                     <div class="social-links" style="display: flex; gap: 15px; justify-content: center; margin-top: 25px;">
                         <a href="https://www.instagram.com/sequence_59?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
-                            <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
                         <a href="https://www.tiktok.com/@squence.59" target="_blank" title="TikTok">
-                            <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
                         <a href="mailto:sequence.59lille@gmail.com" title="Email">
-                            <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
                     </div>
                 </div>
 
                 <div class="contact-box" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #000; padding: 25px; background: #fff; box-shadow: 5px 5px 0px #000;">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                        <div style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                        <div style="display: flex; align-items: center; justify-content: center;">
                             <img src="{{ asset('images/partenaires/studiodu7.png') }}" alt="Studio du 7" style="max-height: 100%; max-width: 100%; object-fit: contain;">
                         </div>
                         <div class="partenaires-textes" style="min-height: 100px; display: flex; align-items: center;">
@@ -122,13 +122,10 @@
                     </div>
                     <div class="social-links" style="display: flex; gap: 15px; justify-content: center; margin-top: 25px;">
                         <a href="https://www.instagram.com/studiodu7lille?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
-                            <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 30px; height: 30px; transition: transform 0.2s;">
-                        </a>
-                        <a href="https://tiktok.com" target="_blank" title="TikTok">
-                            <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
                         <a href="mailto:contact@exemple.com" title="Email">
-                            <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 30px; height: 30px; transition: transform 0.2s;">
+                            <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
                     </div>
                 </div>
