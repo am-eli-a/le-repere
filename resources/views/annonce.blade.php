@@ -20,7 +20,7 @@
                 <div class="annonce-box">
                     @if($annonce->affiche)
                         <div class="annonce-affiche-container">
-                            <img src="{{ asset($annonce->affiche) }}" alt="Affiche" loading="lazy" {{ $annonce->titre }}">
+                            <img src="{{ Str::contains($annonce->affiche, 'uploads') ? asset($annonce->affiche) : asset('storage/' . $annonce->affiche) }}" alt="Affiche" loading="lazy" {{ $annonce->titre }}">
                         </div>
                     @endif
                     <h3>{{$annonce->titre}}</h3>
