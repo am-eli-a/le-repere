@@ -124,7 +124,7 @@
                         <a href="https://www.instagram.com/studiodu7lille?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
                             <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
-                        <a href="mailto:contact@exemple.com" title="Email">
+                        <a href="mailto:studiodu7@gmail.com" title="Email">
                             <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
                     </div>
