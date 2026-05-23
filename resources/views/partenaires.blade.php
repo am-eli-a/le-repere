@@ -65,8 +65,8 @@
                 </p>
             </div>
 
-            <div style="display: flex; gap: 30px; align-items: stretch; justify-content: space-between; flex-wrap: wrap; margin-bottom: 40px;">
-                <div class="contact-box" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #000; padding: 25px; background: #fff; box-shadow: 5px 5px 0px #000;">>
+            <div style="display: flex; gap: 30px; align-items: stretch; justify-content: space-between; margin-bottom: 40px;">
+                <div class="contact-box" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #000; padding: 25px; background: #fff; box-shadow: 5px 5px 0 #000;">
                     <img src="{{ asset('images/partenaires/phil_production.png') }}" alt="Phil Production">
                     <div class="partenaires-textes">
                         <p>Phil Production est une association d'audiovisuel agréée <strong>Université de Lille</strong> qui aime proposer des projets vidéos menés par des passionnés amateurs.</p>
@@ -84,7 +84,7 @@
                     </div>
                 </div>
 
-                <div class="contact-box">
+                <div class="contact-box" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #000; padding: 25px; background: #fff; box-shadow: 5px 5px 0 #000;">
                     <img src="{{ asset('images/partenaires/sequence59_noir.png') }}" alt="Séquence 59">
                     <div class="partenaires-textes">
                         <p>Association de distribution de films amateurs et indépendants lillois.</p>
@@ -102,7 +102,7 @@
                     </div>
                 </div>
 
-                <div class="contact-box">
+                <div class="contact-box" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #000; padding: 25px; background: #fff; box-shadow: 5px 5px 0 #000;">
                     <img src="{{ asset('images/partenaires/studiodu7.png') }}" alt="Studio du 7">
                     <div class="partenaires-textes">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, suscipit.</p>

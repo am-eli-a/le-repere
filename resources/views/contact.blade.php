@@ -35,6 +35,7 @@
                     <button type="submit" class="bouton">Envoyer</button>
                 @else
                     <p>Vous devez être connecté pour envoyer un message.</p>
+                    <br>
                     <a href="{{ route('login') }}" class="bouton">Se connecter</a>
                 @endauth
             </div>
