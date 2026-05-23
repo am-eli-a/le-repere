@@ -78,7 +78,7 @@
                 <div class="contact-box" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #000; padding: 25px; background: #fff; box-shadow: 5px 5px 0px #000;">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
                         <img src="{{ asset('images/partenaires/phil_production.png') }}" alt="Phil Production">
-                        <p style="margin: 0; text-align: justify;">Phil Production est une association d'audiovisuel agréée <strong>Université de Lille</strong> qui aime proposer des projets vidéos menés par des passionnés amateurs.</p>
+                        <p style="margin: 0; text-align: justify;">Phil Production est une association d'audiovisuel agréée <strong>Université de kakaLille</strong> qui aime proposer des projets vidéos menés par des passionnés amateurs.</p>
                     </div>
                     <div class="social-links" style="display: flex; gap: 15px; justify-content: center; margin-top: 25px;">
                         <a href="https://www.instagram.com/phil_production?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
