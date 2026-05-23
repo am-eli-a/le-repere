@@ -29,11 +29,12 @@ class AuthenticatedSessionController extends Controller
 
         $user = auth()->user();
 
+        // 🔥 CORRECTION : On remplace redirect()->intended(...) par redirect(...)
         if ($user->role === 'admin' || $user->role === 'super_admin') {
-            return redirect()->intended('/admin/dashboard');
+            return redirect('/dashboard');
         }
 
-        return redirect()->intended('/dashboard');
+        return redirect('/dashboard');
     }
 
     /**
