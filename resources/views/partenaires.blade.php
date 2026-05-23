@@ -69,7 +69,7 @@
             <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: stretch; justify-content: space-between; margin-bottom: 40px;">
                 <div class="contact-box" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #000; padding: 25px; background: #fff; box-shadow: 5px 5px 0px #000;">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                        <div style="display: flex; align-items: center; justify-content: center;">
+                        <div class="image" style="display: flex; align-items: center; justify-content: center;">
                             <img src="{{ asset('images/partenaires/phil_production.png') }}" alt="Phil Production" style="max-height: 100%; max-width: 100%; object-fit: contain;">
                         </div>
                         <div class="partenaires-textes" style="min-height: 100px; display: flex; align-items: center;">
@@ -91,7 +91,7 @@
 
                 <div class="contact-box" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #000; padding: 25px; background: #fff; box-shadow: 5px 5px 0px #000;">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                        <div style="display: flex; align-items: center; justify-content: center;">
+                        <div class="image" style="display: flex; align-items: center; justify-content: center;">
                             <img src="{{ asset('images/partenaires/sequence59_noir.png') }}" alt="Séquence 59" style="max-height: 100%; max-width: 100%; object-fit: contain;">
                         </div>
                         <div class="partenaires-textes" style="min-height: 100px; display: flex; align-items: center;">
@@ -113,7 +113,7 @@
 
                 <div class="contact-box" style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: space-between; border: 3px solid #000; padding: 25px; background: #fff; box-shadow: 5px 5px 0px #000;">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                        <div style="display: flex; align-items: center; justify-content: center;">
+                        <div class="image" style="display: flex; align-items: center; justify-content: center;">
                             <img src="{{ asset('images/partenaires/studiodu7.png') }}" alt="Studio du 7" style="max-height: 100%; max-width: 100%; object-fit: contain;">
                         </div>
                         <div class="partenaires-textes" style="min-height: 100px; display: flex; align-items: center;">
