@@ -51,4 +51,4 @@ RUN mkdir -p /var/www/html/public/uploads && \
 
 EXPOSE 8080
 
-CMD php artisan storage:link && php artisan migrate --force && php-fpm -D && nginx -g "daemon off;"
+CMD php artisan config:clear && php artisan route:clear && php artisan cache:clear && php artisan migrate --force && php-fpm -D && php artisan queue:work --background --tries=3 && nginx -g "daemon off;"
