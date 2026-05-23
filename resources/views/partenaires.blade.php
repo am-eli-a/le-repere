@@ -100,9 +100,6 @@
                         <a href="https://www.instagram.com/sequence_59?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" title="Instagram">
                             <img src="{{ asset('images/insta.png') }}" alt="Instagram" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
-                        <a href="https://www.tiktok.com/@squence.59" target="_blank" title="TikTok">
-                            <img src="{{ asset('images/tiktok.png') }}" alt="TikTok" style="width: 40px; height: 40px; transition: transform 0.2s;">
-                        </a>
                         <a href="mailto:sequence.59lille@gmail.com" title="Email">
                             <img src="{{ asset('images/mails.png') }}" alt="Email" style="width: 40px; height: 40px; transition: transform 0.2s;">
                         </a>
