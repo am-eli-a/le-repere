@@ -40,18 +40,6 @@ class SuggestionController extends Controller
             'description' => $data['description'],
         ]);
 
-        $details = [
-            'nom' => auth()->user()->prenom . ' ' . auth()->user()->nom,
-            'email' => auth()->user()->email,
-            'message' => "Une nouvelle suggestion a été postée [Titre : " . $suggestion->titre . "] :\n\n" . $suggestion->description,
-        ];
-
-        $superAdmins = User::where('role', 'super_admin')->pluck('email');
-
-        if ($superAdmins->isNotEmpty()) {
-            Mail::bcc($superAdmins)->send(new ContactMessageMail($details, "Nouvelle suggestion postée !"));
-        }
-
         return back()->with('success', 'Merci pour votre suggestion !');
     }
 

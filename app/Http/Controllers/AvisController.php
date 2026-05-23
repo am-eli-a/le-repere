@@ -43,19 +43,6 @@ class AvisController extends Controller
             'note' => $data['note'],
         ]);
 
-        $details = [
-            'nom' => auth()->user()->prenom . ' ' . auth()->user()->nom,
-            'email' => auth()->user()->email,
-            'message' => "Un nouvel avis (" . $avis->note . "/5) a été soumis :\n\n" . $avis->description,
-        ];
-
-        // Correction : On extrait uniquement les adresses mails
-        $superAdmins = User::where('role', 'super_admin')->pluck('email');
-
-        if ($superAdmins->isNotEmpty()) {
-            Mail::bcc($superAdmins)->send(new ContactMessageMail($details, "Nouvel Avis sur Le Repère"));
-        }
-
         return back()->with('success', 'Votre avis a été envoyé :)');
     }
 
