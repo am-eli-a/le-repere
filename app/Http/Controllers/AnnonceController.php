@@ -50,7 +50,6 @@ class AnnonceController extends Controller
             $file->move(public_path('uploads'), $filename);
             $path = 'uploads/' . $filename;
         }
-        }
 
         $annonce = auth()->user()->annonces()->create([
             'titre' => $data['titre'],
