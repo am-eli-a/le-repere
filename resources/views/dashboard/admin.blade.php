@@ -259,7 +259,7 @@
                                 <strong>{{ $item->titre }}</strong><br>
                                 <small style="color: #666;">Par : {{ $item->user->prenom . ' ' . $item->user->nom ?? 'Inconnu' }} | Publié le : {{ $item->created_at->format('d/m/Y') }}</small>
                             </div>
-                            <form action="{{ route('suggestion.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Supprimer cette suggestion ?')">
+                            <form action="{{ route('suggestions.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Supprimer cette suggestion ?')">
                                 @csrf @method('DELETE')
                                 <button type="submit" style="background:none; border:none; color:#ff4d4d; font-weight:bold; cursor:pointer;">Supprimer</button>
                             </form>

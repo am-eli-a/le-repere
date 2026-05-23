@@ -46,7 +46,6 @@ class SuggestionController extends Controller
             'message' => "Une nouvelle suggestion a été postée [Titre : " . $suggestion->titre . "] :\n\n" . $suggestion->description,
         ];
 
-        // Correction : Récupération stricte des e-mails textuels
         $superAdmins = User::where('role', 'super_admin')->pluck('email');
 
         if ($superAdmins->isNotEmpty()) {
@@ -106,7 +105,6 @@ class SuggestionController extends Controller
      */
     public function destroy(Suggestion $suggestion)
     {
-
         if (auth()->id() !== $suggestion->user_id && auth()->user()->role !== 'super_admin' && auth()->user()->role !== 'admin') {
             abort(403, "Vous n'avez pas le droit de supprimer cette suggestion.");
         }

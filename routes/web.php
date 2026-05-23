@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
         // Suppressions (Delete)
         Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.destroy');
         Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
-        Route::delete('/suggestions/{suggestions}', [SuggestionController::class, 'destroy'])->name('suggestion.destroy');
+        Route::delete('/suggestions/{suggestions}', [SuggestionController::class, 'destroy'])->name('suggestions.destroy');
         Route::delete('/annonces/{annonce}', [AnnonceController::class, 'destroy'])->name('annonces.destroy');
         Route::delete('/avis/{avis}', [AvisController::class, 'destroy'])->name('avis.destroy');
 
