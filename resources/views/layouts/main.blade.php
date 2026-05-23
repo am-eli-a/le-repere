@@ -101,11 +101,11 @@
             <div class="social-icons">
                 <div class="bloc-reseaux">
                     <img src="{{ asset('/images/insta.png') }}" alt="Instagram">
-                    <a href="https://www.instagram.com/septem.24?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><p>Instagram</p></a>
+                    <a href="https://www.instagram.com/septem.24?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" style="list-style: none; color:#1a1a1a"><p>Instagram</p></a>
                 </div>
                 <div class="bloc-reseaux">
                     <img src="{{ asset('/images/tiktok.png') }}" alt="Tiktok">
-                    <a href="https://www.tiktok.com/@sep7em.24?is_from_webapp=1&sender_device=pc"><p>Tiktok</p></a>
+                    <a href="https://www.tiktok.com/@sep7em.24?is_from_webapp=1&sender_device=pc" style="list-style: none; color:#1a1a1a"><p>Tiktok</p></a>
                 </div>
             </div>
         </div>
