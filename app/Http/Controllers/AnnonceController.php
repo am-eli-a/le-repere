@@ -45,8 +45,6 @@ class AnnonceController extends Controller
             $file = $request->file('affiche');
             $filename = 'affiche_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
-            @chmod(public_path('uploads'), 0777);
-
             $file->move(public_path('uploads'), $filename);
             $path = 'uploads/' . $filename;
         }
