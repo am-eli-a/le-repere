@@ -42,10 +42,10 @@ class ProfileController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            // On ajoute le préfixe avatar_ dans le nom du fichier
             $filename = 'avatar_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
-            // On déplace DIRECTEMENT dans public/uploads/
+            @chmod(public_path('uploads'), 0777);
+
             $file->move(public_path('uploads'), $filename);
             $user->image = 'uploads/' . $filename;
         }

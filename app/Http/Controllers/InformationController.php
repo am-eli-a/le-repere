@@ -28,10 +28,10 @@ class InformationController extends Controller
         $path = null;
         if ($request->hasFile('affiche')) {
             $file = $request->file('affiche');
-            // On ajoute le préfixe info_
             $filename = 'info_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
-            // On déplace DIRECTEMENT dans public/uploads/
+            @chmod(public_path('uploads'), 0777);
+
             $file->move(public_path('uploads'), $filename);
             $path = 'uploads/' . $filename;
         }

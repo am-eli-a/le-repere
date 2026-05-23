@@ -43,12 +43,13 @@ class AnnonceController extends Controller
         $path = null;
         if ($request->hasFile('affiche')) {
             $file = $request->file('affiche');
-            // On ajoute le préfixe affiche_
             $filename = 'affiche_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
-            // On déplace DIRECTEMENT dans public/uploads/
+            @chmod(public_path('uploads'), 0777);
+
             $file->move(public_path('uploads'), $filename);
             $path = 'uploads/' . $filename;
+        }
         }
 
         $annonce = auth()->user()->annonces()->create([
