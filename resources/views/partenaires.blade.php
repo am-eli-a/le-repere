@@ -50,9 +50,6 @@
                 <a href="https://www.youtube.com/watch?v=j8jlWGUFPKI" class="video-link">Phil Production - Nature morte (Nikon festival)</a>
                 <a href="https://www.youtube.com/watch?v=T2v75mqmPvY" class="video-link">Sequence 59 - V4B EUROPA</a>
                 <a href="https://www.youtube.com/watch?v=m7xn12y1LbA" class="video-link">Sequence 59 - Tue (Making off)</a>
-                <a href="#" class="video-link">vidéo4</a>
-                <a href="#" class="video-link">vidéo5</a>
-                <a href="#" class="video-link">vidéo6</a>
             </nav>
         </aside>
         <div class="partenaires-content">
