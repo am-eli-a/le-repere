@@ -52,6 +52,7 @@
                 <a href="#" class="video-link">vidéo3</a>
                 <a href="#" class="video-link">vidéo4</a>
                 <a href="#" class="video-link">vidéo5</a>
+                <a href="#" class="video-link">vidéo6</a>
             </nav>
         </aside>
         <div class="partenaires-content">
