@@ -47,9 +47,9 @@
         <aside class="fil-d_actu">
             <h3>Leurs dernières réalisations</h3>
             <nav>
-                <a href="#" class="video-link">vidéo1</a>
-                <a href="#" class="video-link">vidéo2</a>
-                <a href="#" class="video-link">vidéo3</a>
+                <a href="https://www.youtube.com/watch?v=j8jlWGUFPKI" class="video-link">Phil Production - Nature morte (Nikon festival)</a>
+                <a href="https://www.youtube.com/watch?v=T2v75mqmPvY" class="video-link">Sequence 59 - V4B EUROPA</a>
+                <a href="https://www.youtube.com/watch?v=m7xn12y1LbA" class="video-link">Sequence 59 - Tue (Making off)</a>
                 <a href="#" class="video-link">vidéo4</a>
                 <a href="#" class="video-link">vidéo5</a>
                 <a href="#" class="video-link">vidéo6</a>
@@ -117,7 +117,7 @@
                             <img src="{{ asset('images/partenaires/studiodu7.png') }}" alt="Studio du 7" style="max-height: 100%; max-width: 100%; object-fit: contain;">
                         </div>
                         <div class="partenaires-textes" style="min-height: 100px; display: flex; align-items: center;">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, suscipit.</p>
+                            <p>Studio de production</p>
                         </div>
                     </div>
                     <div class="social-links" style="display: flex; gap: 15px; justify-content: center; margin-top: 25px;">
