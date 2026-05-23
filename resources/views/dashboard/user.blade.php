@@ -73,7 +73,7 @@
                 <div class="admin-card">
                     <h2>Mes informations actuelles</h2>
                     <div class="info-affichage">
-                        <div class="info-box" style="grid-column: 1 / -1; display: flex; align-items: center; gap: 20px;">
+                        <div class="info-box" style="grid-column: 1/ -1; display: flex; align-items: center; gap: 20px;">
                             <img src="{{ auth()->user()->image ? asset('storage/' . auth()->user()->image) : asset('images/default-pp.png') }}" class="pp-preview">
                             <div>
                                 <label>Photo de profil</label>
