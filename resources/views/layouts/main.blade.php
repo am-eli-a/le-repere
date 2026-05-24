@@ -77,8 +77,7 @@
             </div>
             <div class="footer-contact">
                 <h4>Contact</h4>
-                <p> Email : sep7em.24@gmail.com</p>
-                <p> Tel : 00 00 00 00 00 </p>
+                <a href="mailto:sep7em.24@gmail.com" title="Email">Email : sep7em.24@gmail.com</a>
             </div>
         </div>
         <div class="footer-nav">
@@ -108,6 +107,12 @@
                     <a href="https://www.tiktok.com/@sep7em.24?is_from_webapp=1&sender_device=pc" style="list-style: none; color:#1a1a1a"><p>Tiktok</p></a>
                 </div>
             </div>
+        </div>
+        <p>&copy; {{ date('Y') }} Le Repère. Tous droits réservés.</p>
+
+        <div style="margin-top: 15px; font-size: 0.85rem;">
+            <a href="{{ route('legal') }}" style="color: #efc849; text-decoration: none; margin: 0 10px; font-weight: bold;">Mentions Légales</a> |
+            <a href="{{ route('rgpd') }}" style="color: #efc849; text-decoration: none; margin: 0 10px; font-weight: bold;">Politique de Confidentialité (RGPD)</a>
         </div>
     </div>
 </footer>

@@ -23,12 +23,13 @@ Route::get('/contact', function () {return view('contact');})->name('contact');
 Route::get('/information', [InformationController::class, 'index'])->name('information');
 Route::get('/avis', [AvisController::class, 'index'])->name('avis');
 Route::get('/boite_a_idees', [SuggestionController::class, 'index'])->name('boite_a_idees');
+Route::view('/mentions-legales', 'legal')->name('legal');
+Route::view('/politique-de-confidentialite', 'rgpd')->name('rgpd');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-// ... tes imports ...
 
 Route::middleware('auth')->group(function () {
     // Routes Utilisateur Classiques

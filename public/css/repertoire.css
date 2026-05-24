@@ -103,3 +103,37 @@
     background-color: transparent;
     color: #1a1a1a;
 }
+
+@media (max-width: 900px) {
+    .repertoire-content {
+        padding: 20px 10px;
+    }
+
+    .repertoire-content h2 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .repertoire-bloc {
+        padding: 15px 5px;
+        margin: 15px auto;
+    }
+
+    .repertoire-bloc h3 {
+        font-size: 1.3rem;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .repertoire-box {
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .categorie-box {
+        width: 100%;
+        max-width: 320px;
+        box-sizing: border-box;
+    }
+}

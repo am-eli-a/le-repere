@@ -427,4 +427,11 @@
     .admin-card {
         padding: 25px 15px;
     }
+
+    .suggestion-card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
 }

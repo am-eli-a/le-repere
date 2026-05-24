@@ -8,38 +8,24 @@
         <h2>Nous contacter</h2>
         <hr>
         <br>
-        <form action="{{ route('contact.submit') }}" method="POST">
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" required>
+        <div class="repertoire-content">
+            <div class="categorie-box" style="width: 100%; max-width: 600px; margin: 40px auto; text-align: center; align-items: center;">
+                <div style="background-color: #efc849; color: #1a1a1a; padding: 10px 20px; font-weight: bold; border: 2px solid #1a1a1a; box-shadow: 4px 4px 0 #1a1a1a; margin-bottom: 25px; text-transform: uppercase;">
+                    La page de contact est actuellement en maintenance
+                </div>
 
-            <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
+                <p style="font-size: 1.1rem; color: #1a1a1a; margin-bottom: 20px; line-height: 1.6;">
+                    Notre système d'envoi de messages est actuellement en cours de mise à jour pour mieux vous répondre.
+                </p>
 
-            <label for="email">Mail :</label>
-            <input type="email" id="email" name="email" placeholder="Entrez votre mail" required>
+                <p style="font-size: 1rem; color: #444; margin-bottom: 30px;">
+                    Pour toute demande, vous pouvez nous contacter directement à notre adresse mail :<br>
+                    <strong style="color: #1a1a1a; font-size: 1.1rem;">sep7em.24@gmail.ccom</strong>
+                </p>
 
-            <label for="objet">Objet</label>
-            <div class="select-wrapper">
-                <select name="objet" id="objet" required>
-                    <option value="" disabled selected>Sélectionner une demande</option>
-                    <option value="Demande d'ajout d'une catégorie">Ajout d'une catégorie dans le répertoire</option>
-                    <option value="Demande de partenariats">Faire parti des partenaires</option>
-                    <option value="Toute autre demande">Toute autre demande</option>
-                </select>
+                <a href="{{ route('home') }}">Retour à l'accueil</a>
             </div>
-
-            <label for="message">Message :</label>
-            <textarea id="message" name="message" placeholder="Écrivez un message" rows="7"></textarea>
-            <div class="submit">
-                @auth
-                    <button type="submit" class="bouton">Envoyer</button>
-                @else
-                    <p>Vous devez être connecté pour envoyer un message.</p>
-                    <br>
-                    <a href="{{ route('login') }}" class="bouton">Se connecter</a>
-                @endauth
-            </div>
-        </form>
+        </div>
     </section>
     <br><br>
 @endsection

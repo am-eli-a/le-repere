@@ -324,7 +324,7 @@
                                 <p><strong>Le :</strong> {{ $avi->created_at->format('d/m/Y à H:i') }}</p>
                             </div>
                             <div class="suggestion-content">
-                                <p>{{ \Illuminate\Support\Str::limit($avi->description, 50, '...') }}</p>
+                                <p>{{ Str::limit($avi->description, 50, '...') }}</p>
                             </div>
                             <form action="{{ route('avis.validate', $avi->id) }}" method="POST">
                                 @csrf @method('PATCH')
