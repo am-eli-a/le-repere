@@ -91,6 +91,9 @@
                     <li><a href="{{ route('information') }}">Informations</a></li>
                     <li><a href="{{ route('avis') }}">Avis</a></li>
                     <li><a href="{{ route('boite_a_idees') }}">Boite à idées</a></li>
+                    <li><a href="{{ route('rgpd') }}">Politique de Confidentialité (RGPD)</a></li>
+                    <li><a href="{{ route('legal') }}">Mentions Légales</a></li>
+
                     <li><a href="{{ route('dashboard') }}">Me connecter</a></li>
                 </ul>
             </nav>
@@ -109,11 +112,6 @@
             </div>
         </div>
         <p>&copy; {{ date('Y') }} Le Repère. Tous droits réservés.</p>
-
-        <div style="margin-top: 15px; font-size: 0.85rem;">
-            <a href="{{ route('legal') }}" style="color: #efc849; text-decoration: none; margin: 0 10px; font-weight: bold;">Mentions Légales</a> |
-            <a href="{{ route('rgpd') }}" style="color: #efc849; text-decoration: none; margin: 0 10px; font-weight: bold;">Politique de Confidentialité (RGPD)</a>
-        </div>
     </div>
 </footer>
 
