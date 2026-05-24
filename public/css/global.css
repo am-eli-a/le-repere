@@ -197,6 +197,12 @@ main {
     to { transform: translateY(0); opacity: 1; }
 }
 
+.footer-all {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
 @media screen and (max-width: 1000px) {
 
     .nav-liens ul li a img.login {

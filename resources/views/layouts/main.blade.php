@@ -67,47 +67,48 @@
 </main>
 
 <footer class="foot">
-    <div class="footer-container">
-        <div class="footer-about_contact">
-            <div class="footer-about">
-                <h4>Le Repère</h4>
-                <p>Bienvenu dans "Le Repère" !<br>
-                    Un répertoire mis en place par l'association Septem 24 et accessible au public.
-                </p>
-            </div>
-            <div class="footer-contact">
-                <h4>Contact</h4>
-                <a href="mailto:sep7em.24@gmail.com" title="Email">Email : sep7em.24@gmail.com</a>
-            </div>
-        </div>
-        <div class="footer-nav">
-            <h4>Liens rapides</h4>
-            <nav>
-                <ul>
-                    <li><a href="{{ route('partenaires') }}">Partenaires</a></li>
-                    <li><a href="{{ route('repertoire') }}">Répertoire</a></li>
-                    <li><a href="{{ route('annonce') }}">Annonces</a></li>
-                    <li><a href="{{ route('contact') }}">Nous contacter</a></li>
-                    <li><a href="{{ route('information') }}">Informations</a></li>
-                    <li><a href="{{ route('avis') }}">Avis</a></li>
-                    <li><a href="{{ route('boite_a_idees') }}">Boite à idées</a></li>
-                    <li><a href="{{ route('rgpd') }}">Politique de Confidentialité (RGPD)</a></li>
-                    <li><a href="{{ route('legal') }}">Mentions Légales</a></li>
-
-                    <li><a href="{{ route('dashboard') }}">Me connecter</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="footer-social">
-            <h4>Suivez-nous !</h4>
-            <div class="social-icons">
-                <div class="bloc-reseaux">
-                    <img src="{{ asset('/images/insta.png') }}" alt="Instagram">
-                    <a href="https://www.instagram.com/septem.24?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" style="list-style: none; color:#1a1a1a"><p>Instagram</p></a>
+    <div class="footer-all">
+        <div class="footer-container">
+            <div class="footer-about_contact">
+                <div class="footer-about">
+                    <h4>Le Repère</h4>
+                    <p>Bienvenu dans "Le Repère" !<br>
+                        Un répertoire mis en place par l'association Septem 24 et accessible au public.
+                    </p>
                 </div>
-                <div class="bloc-reseaux">
-                    <img src="{{ asset('/images/tiktok.png') }}" alt="Tiktok">
-                    <a href="https://www.tiktok.com/@sep7em.24?is_from_webapp=1&sender_device=pc" style="list-style: none; color:#1a1a1a"><p>Tiktok</p></a>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <a href="mailto:sep7em.24@gmail.com" title="Email">Email : sep7em.24@gmail.com</a>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <h4>Liens rapides</h4>
+                <nav>
+                    <ul>
+                        <li><a href="{{ route('partenaires') }}">Partenaires</a></li>
+                        <li><a href="{{ route('repertoire') }}">Répertoire</a></li>
+                        <li><a href="{{ route('annonce') }}">Annonces</a></li>
+                        <li><a href="{{ route('contact') }}">Nous contacter</a></li>
+                        <li><a href="{{ route('information') }}">Informations</a></li>
+                        <li><a href="{{ route('avis') }}">Avis</a></li>
+                        <li><a href="{{ route('boite_a_idees') }}">Boite à idées</a></li>
+                        <li><a href="{{ route('rgpd') }}">Politique de Confidentialité (RGPD)</a></li>
+                        <li><a href="{{ route('legal') }}">Mentions Légales</a></li>
+                        <li><a href="{{ route('dashboard') }}">Me connecter</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="footer-social">
+                <h4>Suivez-nous !</h4>
+                <div class="social-icons">
+                    <div class="bloc-reseaux">
+                        <img src="{{ asset('/images/insta.png') }}" alt="Instagram">
+                        <a href="https://www.instagram.com/septem.24?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" style="list-style: none; color:#1a1a1a"><p>Instagram</p></a>
+                    </div>
+                    <div class="bloc-reseaux">
+                        <img src="{{ asset('/images/tiktok.png') }}" alt="Tiktok">
+                        <a href="https://www.tiktok.com/@sep7em.24?is_from_webapp=1&sender_device=pc" style="list-style: none; color:#1a1a1a"><p>Tiktok</p></a>
+                    </div>
                 </div>
             </div>
         </div>
