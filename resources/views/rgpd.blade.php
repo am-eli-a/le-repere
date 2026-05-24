@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
     <div class="repertoire-content" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; max-width: 800px; margin: 0 auto; padding: 40px 20px;">
