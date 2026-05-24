@@ -112,7 +112,7 @@
                             <img src="{{ asset('images/partenaires/studiodu7.png') }}" alt="Studio du 7" style="max-height: 100%; max-width: 100%; object-fit: contain;">
                         </div>
                         <div class="partenaires-textes" style="min-height: 100px; display: flex; align-items: center;">
-                            <p>Studio de production</p>
+                            <p>Association d'audiovisuel à Lille, en cours de création</p>
                         </div>
                     </div>
                     <div class="social-links" style="display: flex; gap: 15px; justify-content: center; margin-top: 25px;">
