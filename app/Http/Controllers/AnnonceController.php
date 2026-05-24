@@ -60,14 +60,15 @@ class AnnonceController extends Controller
         $details = [
             'nom' => auth()->user()->prenom . ' ' . auth()->user()->nom,
             'email' => auth()->user()->email,
-            'message' => "Une nouvelle annonce vient d'être proposée : " . $annonce->titre,
+            'message' => "Une nouvelle annonce vient d'être publiée : " . $annonce->titre,
         ];
+        $emailsMembres = User::pluck('email')->toArray();
 
-        $allUser = User::pluck('email');
-
-        if ($allUser->isNotEmpty()) {
-            Mail::bcc($allUser)->send(new ContactMessageMail($details, "Nouvelle Annonce sur Le Repère"));
+        if (!empty($emailsMembres)) {
+            Mail::bcc($emailsMembres)->queue(new ContactMessageMail($details, "Nouvelle annonce sur Le Repère !"));
         }
+
+        return back()->with('success', 'Annonce validée !');
     }
 
     /**

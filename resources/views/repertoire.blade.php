@@ -23,7 +23,7 @@
                                 <img src="{{ asset('images/login.png') }}" alt="Image par défaut">
                             @endif
                             <p>{{ $user->prenom }} {{ $user->nom }}</p>
-                            <p>{{ $user->age }}</p>
+                            <p>{{ $user->age }} ans</p>
                             <p>{{ $user->lieu }}</p>
                             <p><span>@</span>{{ ltrim($user->insta, '@') }}</p>
                                 <p>{{($user->email)}}</p>
