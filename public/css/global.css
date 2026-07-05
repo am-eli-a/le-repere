@@ -40,7 +40,7 @@ main {
 }
 
 .head {
-    background-color: #efc849;
+    background-color: #1a1a1a;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
@@ -75,7 +75,7 @@ main {
 }
 
 .nav-liens ul li a{
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -99,9 +99,33 @@ main {
 }
 
 .nav-liens ul li a:hover {
-    color: #ffffff;
+    color: #efc849;
     transition: color 0.2s ease;
 }
+
+#recherche {
+    border: 2px solid #1a1a1a;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.875rem;
+    background-color: #faf8f3;
+    color: #1a1a1a;
+    outline: none;
+    width: 220px;
+    transition: all 0.2s ease;
+}
+
+#recherche::placeholder {
+    color: #aaa;
+}
+
+#recherche:focus {
+    border-color: #efc849;
+    box-shadow: 3px 3px 0 #efc849;
+    width: 280px;
+}
+
 
 .bouton {
     display: inline-block;
@@ -124,7 +148,15 @@ main {
 }
 
 .foot {
-    background-color: #efc849;
+    background-color: #1a1a1a;
+}
+
+.foot * {
+    color: #ffffff;
+}
+
+.foot p {
+    color: #ffffff;
 }
 
 .footer-container {
@@ -139,17 +171,13 @@ main {
 }
 
 .footer-nav ul li a{
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
 }
 
-.footer-nav ul li a.active {
-    color: #c48b1d;
-    font-weight: bold;}
-
 .footer-nav ul li a:hover {
     transition: color 0.15s;
-    color: #ffffff;
+    color: #efc849;
 }
 
 .social-icons {
@@ -226,8 +254,8 @@ main {
         top: 75px;
         left: 0;
         width: 100%;
-        background-color: #ffe7c2;
-        border-bottom: 2px solid #ffd9c2;
+        background-color: #1a1a1a;
+        border-bottom: 2px solid #000000;
     }
 
     .menu-toggle:checked ~ .nav-liens {

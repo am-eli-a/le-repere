@@ -1,5 +1,7 @@
-@extends('layouts.main') @push('styles')
-    <link rel="stylesheet" href="{{ asset('css/annonce.css') }}"> @endpush
+@extends('layouts.main')
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/annonce.css') }}">
+@endpush
 @push('active_annonce')class="active"@endpush
 
 @section('content')
@@ -15,19 +17,30 @@
             <a href="{{ route('login') }}" class="bouton">Se connecter</a>
         @endauth
 
+        <div class="type-box">
+            <button class="active" data-type="tous">Tous</button>
+            @foreach($types as $key => $label)
+                <button data-type="{{ $key }}">{{ $label }}</button>
+            @endforeach
+            <input type="text" placeholder="Recherche..." id="recherche" name="recherche">
+        </div>
+
         <div class="annonce-bloc">
             @foreach($toutesLesAnnonce as $annonce)
-                <div class="annonce-box">
-                    @if($annonce->affiche)
-                        <div class="annonce-affiche-container">
-                            <img src="{{ Str::contains($annonce->affiche, 'uploads') ? asset($annonce->affiche) : asset('storage/' . $annonce->affiche) }}" alt="Affiche" loading="lazy" {{ $annonce->titre }}">
-                        </div>
-                    @endif
-                    <h3>{{$annonce->titre}}</h3>
-                    <p>Description de l'annonce :</p>
-                    <p>{{$annonce->description}}</p>
-                        <p>Date : {{ $annonce->date ? \Carbon\Carbon::parse($annonce->date)->format('d/m/Y') : 'Non spécifiée' }}</p>
-                    <p>Lieu : {{$annonce->lieu}}</p>
+                <div class="annonce-box" data-type="{{ $annonce->type }}" data-search="{{ strtolower($annonce->titre . ' ' . $annonce->description . ' ' . $annonce->lieu) }}">
+                    <div class="annonce-box-inner">
+                        @if($annonce->affiche)
+                            <div class="annonce-affiche-container">
+                                <img src="{{ Str::contains($annonce->affiche, 'uploads') ? asset($annonce->affiche) : asset('storage/' . $annonce->affiche) }}" alt="Affiche de {{ $annonce->titre }}" loading="lazy">
+                            </div>
+                        @endif
+                        <span class="annonce-type-badge">{{ $annonce->type_libelle }}</span>
+                        <h3>{{ $annonce->titre }}</h3>
+                        <p class="annonce-description">{{ $annonce->description }}</p>
+                        <p>
+                            @if($annonce->lieu) {{ $annonce->lieu }} @endif
+                            @if($annonce->date) · {{ \Carbon\Carbon::parse($annonce->date)->format('d/m/Y') }} @endif
+                        </p>
                         <div class="annonce-infos">
                             <p><strong>Publié par :</strong> {{ $annonce->user->prenom }} {{ $annonce->user->nom }}</p>
                             <p><strong>Contact :</strong></p>
@@ -35,14 +48,41 @@
                                 <li>Mail : <a href="mailto:{{ $annonce->user->email }}">{{ $annonce->user->email }}</a></li>
                                 <li>Insta : {{ $annonce->user->insta ? '@'.ltrim($annonce->user->insta, '@') : 'Non renseigné' }}</li>
                             </ul>
-
                             <p class="date-publication">
                                 Posté le : {{ $annonce->created_at->format('d/m/Y') }}
-                                <span style="font-size: 0.8rem; font-style: italic;">({{ $annonce->created_at->diffForHumans() }})</span>
+                                <span>({{ $annonce->created_at->diffForHumans() }})</span>
                             </p>
                         </div>
+                    </div>
                 </div>
             @endforeach
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        document.querySelectorAll('.type-box button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.type-box button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const filtre = this.getAttribute('data-type');
+                document.querySelectorAll('.annonce-box').forEach(bloc => {
+                    if (filtre === 'tous') {
+                        bloc.style.display = 'grid';
+                    } else {
+                        bloc.style.display = bloc.getAttribute('data-type') === filtre ? 'grid' : 'none';
+                    }
+                });
+            });
+        });
+
+        document.getElementById('recherche').addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            document.querySelectorAll('.annonce-box').forEach(bloc => {
+                const data = bloc.getAttribute('data-search');
+                bloc.style.display = data.includes(query) ? 'grid' : 'none';
+            });
+        });
+    </script>
+@endpush

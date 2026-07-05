@@ -9,13 +9,11 @@ use App\Http\Controllers\InformationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/partenaires', function () { return view('partenaires'); })->name('partenaires');
 Route::get('/repertoire', [UserController::class, 'repertoire'])->name('repertoire');
 Route::get('/annonce', [AnnonceController::class, 'index'])->name('annonce');

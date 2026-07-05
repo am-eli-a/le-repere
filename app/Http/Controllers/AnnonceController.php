@@ -16,9 +16,15 @@ class AnnonceController extends Controller
     public function index()
     {
         $toutesLesAnnonce = Annonce::where('valide', true)->with('user')->latest()->get();
-        return view('annonce', compact('toutesLesAnnonce'));
+        $types = [
+            'recherche_talent' => 'Recherche de talent',
+            'pret_materiel' => 'Prêt de matériel',
+            'proposition_scenario' => 'Proposition de scénario',
+            'appel_projet' => 'Appel à projet',
+            'autre' => 'Autre',
+        ];
+        return view('annonce', compact('toutesLesAnnonce', 'types'));
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -38,19 +44,20 @@ class AnnonceController extends Controller
             'lieu' => 'nullable|string',
             'date' => 'nullable|date',
             'affiche' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'type' => 'required|in:recherche_talent,pret_materiel,proposition_scenario,appel_projet,autre',
         ]);
 
         $path = null;
         if ($request->hasFile('affiche')) {
             $file = $request->file('affiche');
             $filename = 'affiche_' . time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-
             $file->move(public_path('uploads'), $filename);
             $path = 'uploads/' . $filename;
         }
 
         $annonce = auth()->user()->annonces()->create([
             'titre' => $data['titre'],
+            'type' => $data['type'],
             'description' => $data['description'],
             'lieu' => $data['lieu'],
             'date' => $data['date'],
@@ -63,12 +70,11 @@ class AnnonceController extends Controller
             'message' => "Une nouvelle annonce vient d'être publiée : " . $annonce->titre,
         ];
         $emailsMembres = User::pluck('email')->toArray();
-
         if (!empty($emailsMembres)) {
             Mail::bcc($emailsMembres)->queue(new ContactMessageMail($details, "Nouvelle annonce sur Le Repère !"));
         }
 
-        return back()->with('success', 'Annonce validée !');
+        return back()->with('success', 'Annonce envoyée, en attente de validation !');
     }
 
     /**
