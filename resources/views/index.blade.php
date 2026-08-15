@@ -19,7 +19,7 @@
 
     <section class="presentation_texte">
         <div class="presentation">
-            <h2>Le Repère</h2>
+            <h1 class="titre">Le Repère</h1>
             <p>Bienvenu dans "Le Repère" ! Un répertoire mis en place par l'association Septem 24 et accessible au
                 public. Ce dernier regroupe des personnes en fonction de leur activité qui acceptent d'être contactées
                 pour participer à des projets amateurs ou professionnels. Chaque personne est vérifiée par notre
@@ -78,11 +78,11 @@
         <div class="annonce-box">
             @foreach($annonces as $annonce)
                 <div class="annonce-bloc">
-                    <h3>{{ $annonce->type_libelle }}</h3>
                     <p><strong>{{ $annonce->titre }}</strong></p>
                     @if($annonce->lieu)
                         <p>{{ $annonce->lieu }} </p>
                     @endif
+                    <p>Publié par : {{ $annonce->user->prenom }} {{ $annonce->user->nom }}</p>
                 </div>
             @endforeach
             <a href="{{ route('annonce') }}">Voir toutes les annonces →</a>

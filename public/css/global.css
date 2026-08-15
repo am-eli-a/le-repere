@@ -1,5 +1,20 @@
+/* ============================================================
+   GLOBAL.CSS — Le Repère
+   Palette : #efc849 (jaune) · #1a1a1a (noir) · #f9f9f9 (blanc cassé)
+   Fond de page : #fdfcf0
+   ============================================================ */
+
 * {
     box-sizing: border-box;
+}
+
+::selection {
+    background: #efc849;
+}
+
+html {
+    scrollbar-color: #efc849 #1a1a1a;
+    scrollbar-width: auto;
 }
 
 html, body {
@@ -13,28 +28,180 @@ body {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     font-style: normal;
+    background-color: #fdfcf0;
+    color: #1a1a1a;
 }
 
-h1,h2,h3,h4 {
+h1, h2, h3, h4 {
     font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    color: #1a1a1a;
 }
 
 h3, h4 {
-    font-weight: bold;
+    font-weight: 700;
+}
+
+p {
+    line-height: 1.65;
+    color: #333;
+}
+
+a {
+    color: #1a1a1a;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #efc849;
 }
 
 section {
     padding: 30px 0;
 }
 
+/* ============================================================
+   UTILITAIRES GLOBAUX
+   ============================================================ */
+
+/* Conteneur de page standard */
+.page-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+/* Titre de page standard */
+.page-titre {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 4px solid #efc849;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    color: #1a1a1a;
+}
+
+/* Bloc encadré brutaliste */
+.bloc-brutal {
+    background: #ffffff;
+    border: 2px solid #1a1a1a;
+    box-shadow: 6px 6px 0 #1a1a1a;
+    padding: 25px 30px;
+    margin-bottom: 25px;
+}
+
+/* Badge / étiquette jaune */
+.titre-badge {
+    display: inline-block;
+    background-color: #efc849;
+    color: #1a1a1a;
+    padding: 4px 14px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+/* Pills de filtre */
+.filter-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.filter-box button {
+    background-color: #f9f9f9;
+    border: 2px solid #1a1a1a;
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #1a1a1a;
+}
+
+.filter-box button:hover,
+.filter-box button.active {
+    background-color: #efc849;
+    font-weight: 700;
+}
+
+/* Input de recherche */
+.search-input {
+    border: 2px solid #1a1a1a;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.875rem;
+    background-color: #faf8f3;
+    color: #1a1a1a;
+    outline: none;
+    width: 220px;
+    transition: all 0.2s ease;
+}
+
+.search-input::placeholder {
+    color: #aaa;
+}
+
+.search-input:focus {
+    border-color: #efc849;
+    box-shadow: 3px 3px 0 #efc849;
+    width: 280px;
+}
+
+/* Texte intro de page */
+.page-intro {
+    color: #444;
+    line-height: 1.7;
+    max-width: 800px;
+    margin-bottom: 12px;
+}
+
+/* ============================================================
+   BOUTON PRINCIPAL
+   ============================================================ */
+
+.bouton {
+    display: inline-block;
+    background-color: #1a1a1a;
+    color: #efc849;
+    padding: 12px 25px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: 2px solid #1a1a1a;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bouton:hover {
+    background-color: transparent;
+    color: #1a1a1a;
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
 main {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
     width: 100%;
     background-color: #fdfcf0;
 }
@@ -57,7 +224,6 @@ main {
     max-height: 70px;
     margin-left: 20%;
     display: block;
-
 }
 
 .nav-liens ul {
@@ -74,15 +240,21 @@ main {
     margin: 7px;
 }
 
-.nav-liens ul li a{
+.nav-liens ul li a {
     color: #ffffff;
     text-decoration: none;
+    font-size: 0.9rem;
 }
 
-.nav-liens ul li a.active{
-    color: #c48b1d;
+.nav-liens ul li a.active {
+    color: #efc849;
     font-weight: 800;
-    border-bottom: 2px solid #c48b1d;
+    border-bottom: 2px solid #efc849;
+}
+
+.nav-liens ul li a:hover {
+    color: #efc849;
+    transition: color 0.2s ease;
 }
 
 .login {
@@ -98,54 +270,43 @@ main {
     align-items: center;
 }
 
-.nav-liens ul li a:hover {
-    color: #efc849;
-    transition: color 0.2s ease;
+.menu-toggle, .burger {
+    display: none;
 }
 
-#recherche {
-    border: 2px solid #1a1a1a;
-    border-radius: 20px;
-    padding: 6px 16px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.875rem;
-    background-color: #faf8f3;
-    color: #1a1a1a;
-    outline: none;
-    width: 220px;
-    transition: all 0.2s ease;
+/* ============================================================
+   ALERTES
+   ============================================================ */
+
+.erreurs {
+    width: 100%;
 }
 
-#recherche::placeholder {
-    color: #aaa;
-}
-
-#recherche:focus {
-    border-color: #efc849;
-    box-shadow: 3px 3px 0 #efc849;
-    width: 280px;
-}
-
-
-.bouton {
-    display: inline-block;
-    background-color: #1a1a1a;
-    color: #efc849;
-    padding: 12px 25px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: bold;
+.brutal-alert {
+    padding: 15px 25px;
+    border: 4px solid #1a1a1a;
+    margin: 20px auto;
+    max-width: 650px;
+    font-weight: 500;
     text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 1px;
-    border: 2px solid #1a1a1a;
-    transition: all 0.3s ease;
+    box-shadow: 8px 8px 0 #1a1a1a;
+    position: relative;
+    list-style: none;
 }
 
-.bouton:hover {
-    background-color: transparent;
+.brutal-alert.success {
+    background-color: #efc849;
     color: #1a1a1a;
 }
+
+.brutal-alert.error {
+    background-color: #ff5555;
+    color: white;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
 
 .foot {
     background-color: #1a1a1a;
@@ -155,28 +316,52 @@ main {
     color: #ffffff;
 }
 
-.foot p {
+.foot a {
     color: #ffffff;
+    text-decoration: none;
+}
+
+.foot a:hover {
+    color: #efc849;
+}
+
+.footer-all {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 20px 20px;
 }
 
 .footer-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: nowrap;
+    gap: 30px;
+}
+
+.footer-about_contact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .footer-nav ul {
     list-style: none;
-    margin-bottom: 8px;
+    padding: 0;
+    margin: 0;
 }
 
-.footer-nav ul li a{
+.footer-nav ul li {
+    margin-bottom: 6px;
+}
+
+.footer-nav ul li a {
     color: #ffffff;
     text-decoration: none;
+    font-size: 0.9rem;
 }
 
 .footer-nav ul li a:hover {
-    transition: color 0.15s;
     color: #efc849;
 }
 
@@ -184,68 +369,43 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-
+    gap: 10px;
 }
 
 .bloc-reseaux {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    gap: 10px;
 }
 
 .bloc-reseaux img {
-    max-width: 70px;
-    max-height: 70px;
-    margin: 10% 20%;
+    max-width: 40px;
+    max-height: 40px;
 }
 
-.menu-toggle, .burger {
-    display: none;
-}
-
-.brutal-alert {
-    padding: 15px 25px;
-    border: 4px solid #000;
-    margin: 20px auto;
-    max-width: 650px;
+.footer-bottom {
+    text-align: center;
+    width: 100%;
+    margin: 20px 0 0 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
     font-weight: 500;
-    text-transform: uppercase;
-    box-shadow: 8px 8px 0 #000;
-    position: relative;
-    animation: slideIn 0.3s ease-out;
-    list-style: none;
+    font-size: 0.875rem;
+    color: #ffffff;
 }
 
-.success { background-color: #00ff88; }
-.error { background-color: #ff5555; color: white; }
-
-.brutal-alert slideIn {
-    from { transform: translateY(-20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.footer-all {
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-}
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
 @media screen and (max-width: 1000px) {
-
-    .nav-liens ul li a img.login {
-        margin: 0 auto;
-        max-width: 40px;
-        max-height: 40px;
-        display: block;
-    }
 
     .head {
         flex-direction: row;
         justify-content: space-between;
         padding: 0 15px;
         width: 100%;
-        z-index: 999999;
     }
 
     .nav-liens {
@@ -255,7 +415,8 @@ main {
         left: 0;
         width: 100%;
         background-color: #1a1a1a;
-        border-bottom: 2px solid #000000;
+        border-bottom: 2px solid #efc849;
+        z-index: 9999;
     }
 
     .menu-toggle:checked ~ .nav-liens {
@@ -270,7 +431,7 @@ main {
     }
 
     .nav-liens ul li {
-        margin: 15px 0;
+        margin: 12px 0;
         width: 100%;
         text-align: center;
         display: flex;
@@ -279,7 +440,6 @@ main {
 
     .login {
         margin: 0 !important;
-        position: static;
     }
 
     .burger {
@@ -294,20 +454,29 @@ main {
     .burger span {
         width: 100%;
         height: 3px;
-        background-color: #000;
+        background-color: #efc849;
         transition: 0.3s;
     }
 
     .footer-container {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
         gap: 30px;
     }
 
-    .footer-about_contact {
-        flex-direction: column;
-        gap: 20px;
+    .page-titre {
+        font-size: 1.8rem;
     }
 
+    .search-input {
+        width: 100%;
+    }
+
+    .search-input:focus {
+        width: 100%;
+    }
+
+    .filter-box {
+        gap: 6px;
+    }
 }

@@ -17,24 +17,19 @@
             <a href="{{ route('login') }}" class="bouton">Se connecter</a>
         @endauth
 
-        <div class="type-box">
-            <button class="active" data-type="tous">Tous</button>
-            @foreach($types as $key => $label)
-                <button data-type="{{ $key }}">{{ $label }}</button>
-            @endforeach
+        <div class="recherche">
             <input type="text" placeholder="Recherche..." id="recherche" name="recherche">
         </div>
 
         <div class="annonce-bloc">
             @foreach($toutesLesAnnonce as $annonce)
-                <div class="annonce-box" data-type="{{ $annonce->type }}" data-search="{{ strtolower($annonce->titre . ' ' . $annonce->description . ' ' . $annonce->lieu) }}">
+                <div class="annonce-box" data-search="{{ strtolower($annonce->titre . ' ' . $annonce->description . ' ' . $annonce->lieu) }}">
                     <div class="annonce-box-inner">
                         @if($annonce->affiche)
                             <div class="annonce-affiche-container">
                                 <img src="{{ Str::contains($annonce->affiche, 'uploads') ? asset($annonce->affiche) : asset('storage/' . $annonce->affiche) }}" alt="Affiche de {{ $annonce->titre }}" loading="lazy">
                             </div>
                         @endif
-                        <span class="annonce-type-badge">{{ $annonce->type_libelle }}</span>
                         <h3>{{ $annonce->titre }}</h3>
                         <p class="annonce-description">{{ $annonce->description }}</p>
                         <p>

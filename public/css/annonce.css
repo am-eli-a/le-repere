@@ -22,30 +22,12 @@
     max-width: 800px;
 }
 
-.type-box {
+.recherche {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
     margin: 20px 0;
-}
-
-.type-box button {
-    background-color: #f9f9f9;
-    border: 2px solid #1a1a1a;
-    border-radius: 20px;
-    padding: 5px 14px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.type-box button:hover,
-.type-box button.active {
-    background-color: #efc849;
-    font-weight: 700;
 }
 
 #recherche {
