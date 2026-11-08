@@ -1,58 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎬 Le Repère
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> Plateforme de l'association **Septem 24** (Lille) : un annuaire de talents et un tableau de projets pour les professionnels et créateurs de l'audiovisuel indépendant.
 
-## About Laravel
+[![Statut](https://img.shields.io/badge/statut-en%20cours%20de%20développement-efc849?style=for-the-badge&labelColor=1a1a1a)](#-roadmap)
+[![Version](https://img.shields.io/badge/version-V1%20en%20ligne-efc849?style=for-the-badge&labelColor=1a1a1a)](#-roadmap)
+[![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+🌐 **Site en ligne (V1)**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+> ⚠️ **Projet en cours** : la V1 est en ligne mais le projet n'est pas terminé. Certaines fonctionnalités sont encore en développement et l'interface évolue régulièrement.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ✨ Le principe
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Le Repère** aide les acteurs de l'audiovisuel indépendant de la région à se trouver et à collaborer :
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- 🧑‍🎤 **Annuaire de talents** : retrouver des profils (réalisateurs, techniciens, comédiens…) avec un **filtrage en temps réel** par catégorie
+- 📋 **Tableau de projets** : publier ou consulter des projets et des besoins
+- 🤝 **Page partenaires** de l'association
+- 🔐 **Comptes utilisateurs** avec des coordonnées de contact à accès contrôlé
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## 🛠️ Stack technique
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+| Domaine | Technologies |
+|---------|--------------|
+| Back-end | PHP 8.5, Laravel |
+| Front-end | Blade, Tailwind CSS, JavaScript, Vite |
+| Composants | Swiper.js (carrousel) |
+| Base de données | PostgreSQL |
+| Hébergement | Railway |
+| Versionnement | Git, GitHub |
 
-```bash
-composer require laravel/boost --dev
+### Direction artistique
 
-php artisan boost:install
-```
+Palette volontairement stricte : jaune moutarde `#efc849`, noir `#1a1a1a` et blanc cassé `#f9f9f9`. Un fichier `global.css` regroupe des classes utilitaires réutilisables pour garder des pages cohérentes.
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## 🗺️ Roadmap
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- [x] **V1** : annuaire de talents, tableau de projets, comptes utilisateurs
+- [ ] **V2** (en cours)
+  - Refonte visuelle pour harmoniser toutes les pages
+  - Redesign de la page partenaires
+  - Fiabilisation de l'envoi d'e-mails
+- [ ] **Plus tard** (pistes)
+  - Connexion avec Google (OAuth via Socialite)
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 📄 Contexte
 
-## Security Vulnerabilities
+Projet bénévole réalisé pour l'association **Septem 24**, avec analyse des besoins et retours réguliers de l'association. L'association gère aussi d'autres projets que j'ai développés : [Septem TCG](https://septem-tcg.ameliadev.fr/) (jeu de cartes à collectionner) et un site de ciné-club (en cours).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 👩‍💻 Auteure
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Amelia Dufour-Lazrek**, étudiante en BUT Informatique
+[GitHub](https://github.com/am-eli-a) · [LinkedIn](https://www.linkedin.com/in/amelia-dufour-lazrek-159101375/)
